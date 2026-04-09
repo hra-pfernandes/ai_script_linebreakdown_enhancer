@@ -1,0 +1,96 @@
+{
+  "analysis": {
+    "line_level_source_table": "#Step3",
+    "hierarchy_table": "#Step4",
+    "total_price_table": "#Step5",
+    "final_join_table": "#Step7",
+    "output_table": "#StepFinal",
+    "has_ncci_bundle": false,
+    "has_window_reduction": false,
+    "window_reduction_categories": [],
+    "has_aggregate_date_step": true,
+    "hybrid_categories": [],
+    "max_categories": [
+      "COVID",
+      "Clinic"
+    ],
+    "sum_categories": [
+      "OP_Default"
+    ],
+    "indicator_flag_categories": [],
+    "aggregate_date_raw": {
+      "columns": [
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Clinic",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "aggregate_enc_raw": {
+      "columns": [
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Clinic",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "window_reduction_lead_partitions": []
+  },
+  "insertion_plan": [
+    {
+      "insertion_id": 1,
+      "phase": "cleanup_drop",
+      "description": "DROP TABLE safety lines for #bRanked, #bSlots, #LineBreakdown, #recon_temp in the cleanup block",
+      "role_anchor_table": "cleanup_block",
+      "anchor_snippet": "IF OBJECT_ID('tempdb..#StepFinal') IS NOT NULL DROP TABLE #StepFinal",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 2,
+      "phase": "breakdown_block",
+      "description": "#bRanked + SELECT INTO #LineBreakdown (no #bSlots as no WINDOW_REDUCTION categories)",
+      "role_anchor_table": "#Step4",
+      "anchor_snippet": "INTO #Step4\n\tFROM #Step3_2",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 3,
+      "phase": "final_join_detail_column",
+      "description": "Price_Breakdown_Detail correlated subquery as last column in FINAL_JOIN SELECT, before INTO #Step7",
+      "role_anchor_table": "#Step7",
+      "anchor_snippet": "\tInto #Step7",
+      "insert_position": "before",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 4,
+      "phase": "auditor_queries",
+      "description": "Auditor Query 1 + INSERT + Query 2 reconciliation appended after final OUTPUT SELECT",
+      "role_anchor_table": "#StepFinal",
+      "anchor_snippet": "\tSelect [Status], count(*)\n\tFrom #StepFinal\n\tGroup by [Status]\n\torder by count(*) desc",
+      "insert_position": "after",
+      "occurrence_index": 1
+    }
+  ],
+  "missing_phases": [],
+  "classification_issues": [],
+  "classification_retries": 1
+}

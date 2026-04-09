@@ -1,0 +1,24 @@
+INSERTION 1 | phase=cleanup_drop anchor_line=16 ends_line=20 in=35925 out=191 time=10.03 cost=0.1218 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ContractYearFrom', 'ContractYearTo', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=590 ends_line=1121 in=38028 out=10472 time=130.71 cost=0.2823 success=True lines=531
+INSERTION 3 | phase=final_join_detail_column anchor_line=1363 ends_line=1377 in=46414 out=496 time=14.41 cost=0.1578 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1417 ends_line=1497 in=46882 out=1181 time=19.20 cost=0.1695 success=True lines=80
+FILE_SUMMARY | NYP_COL_HIP_Exchange_Essential_OP_Complete.sql | insertions=4 success=4 failed=0 input=200986 output=25162 time=323.42 cost=1.0362
+FATAL | HYBRID_MISS | 'eps' is MAX in AGGREGATE_DATE but SUM in AGGREGATE_ENC — must be in hybrid_categories. Currently declared as: max_categories. If left as SUM, LinePayment pays every line instead of one winner per date, causing overpayment invisible to reconciliation.
+FATAL | HYBRID_MISS | 'per_day' is MAX in AGGREGATE_DATE but SUM in AGGREGATE_ENC — must be in hybrid_categories. Currently declared as: sum_categories. If left as SUM, LinePayment pays every line instead of one winner per date, causing overpayment invisible to reconciliation.
+FATAL | HYBRID_WRONG | 'as' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'no_payment' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'ptca_cardiac_cath' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'cardiac_cath' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'er' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'vascular_angioplasty' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | MAX_IS_SUM | 'eps' is in max_categories but AGGREGATE_ENC uses SUM(). Generated IIF(rn=1) logic will cause underpayment.
+FATAL | SUM_IS_HYBRID | 'per_day' is in sum_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM — this is HYBRID. Plain SUM LinePayment pays every line instead of one winner per date. Overpayment WILL NOT be caught by reconciliation.
+INSERTION 1 | phase=cleanup_drop anchor_line=16 ends_line=20 in=35547 out=191 time=3.86 cost=0.1176 success=True lines=4
+RN_CONSISTENCY_FAIL | ['rn_CAT']
+RN_CONSISTENCY_FAIL_RETRY | ['rn_CAT']
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'BillCharges', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=590 ends_line=1120 in=39992 out=11760 time=142.46 cost=0.3045 success=True lines=530
+INSERTION 3 | phase=final_join_detail_column anchor_line=1359 ends_line=1372 in=46111 out=399 time=9.84 cost=0.1524 success=True lines=13
+INSERTION 4 | phase=auditor_queries anchor_line=1415 ends_line=1490 in=46533 out=1090 time=17.42 cost=0.1641 success=True lines=75
+FILE_SUMMARY | NYP_COL_HIP_Exchange_Essential_OP_Complete.sql | insertions=4 success=4 failed=0 input=277449 output=26227 time=326.80 cost=1.2745

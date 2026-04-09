@@ -1,0 +1,4 @@
+session_id=20067111-4d63-420c-9440-9b851bd3389a files=1 success=1 failed=0 insertions=4 applied=4 cost=1.6001 savings=0.5420 time=289.39
+
+FILE RESULTS:
+NYP_COL_Aetna_Commercial_OP_Complete.sql | success=True | insertions=4/4 | missing=[] | cost=$1.6001

@@ -1,0 +1,81 @@
+EDIT 1 | in=53406 out=151 cached=77932 uncached=53406 time=3.25 cost=0.1742
+EDIT 2 | in=54752 out=15003 cached=77932 uncached=54752 time=174.67 cost=0.4010
+EDIT 3 | in=65144 out=538 cached=77932 uncached=65144 time=12.75 cost=0.2152
+EDIT 4 | in=64368 out=851 cached=77932 uncached=64368 time=17.50 cost=0.2176
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | edits=4 success=4 failed=0 input=289778 output=29762 time=370.13 cost=1.3625
+EDIT 1 | in=53406 out=151 cached=77932 uncached=53406 time=3.18 cost=0.1742 success=True
+EDIT 4 | in=53698 out=896 cached=0 uncached=53698 time=20.02 cost=0.1745 success=True
+EDIT 3 | in=54388 out=834 cached=77932 uncached=54388 time=13.36 cost=0.1874 success=True
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | edits=4 success=3 failed=1 input=268151 output=47633 time=582.76 cost=1.5540
+EDIT 1 | in=53523 out=141 cached=77932 uncached=53523 time=3.84 cost=0.1744 success=True
+EDIT 2 | in=54545 out=12263 cached=77932 uncached=54545 time=139.19 cost=0.3593 success=True
+EDIT 4 | in=64972 out=1053 cached=77932 uncached=64972 time=16.06 cost=0.2224 success=True
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | edits=4 success=3 failed=1 input=290484 output=15236 time=194.15 cost=1.1468
+EDIT 1 | in=53517 out=135 cached=77932 uncached=53517 time=3.61 cost=0.1743 success=True
+EDIT 2 | in=56050 out=22439 cached=77932 uncached=56050 time=194.74 cost=0.5164 success=True
+EDIT 3 | in=63900 out=620 cached=77932 uncached=63900 time=10.72 cost=0.2127 success=True
+EDIT 4 | in=63608 out=1123 cached=77932 uncached=63608 time=18.56 cost=0.2194 success=True
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | edits=4 success=4 failed=0 input=289301 output=27964 time=265.75 cost=1.3341
+EDIT 1 | op=insert_before | in=53523 out=141 cached=77932 uncached=53523 time=3.93 cost=0.1744 success=True
+EDIT 2 | op=insert_before | in=54456 out=11511 cached=77932 uncached=54456 time=118.15 cost=0.3477 success=True
+EDIT 4 | op=replace | in=64652 out=1121 cached=77932 uncached=64652 time=18.64 cost=0.2225 success=True
+EDIT 3 | op=insert_before | in=64927 out=756 cached=77932 uncached=64927 time=11.59 cost=0.2178 success=True
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | edits=4 success=4 failed=0 input=289784 output=14716 time=170.96 cost=1.1369
+INSERTION 1 | phase=breakdown_block in=54201 out=15619 time=177.91 cost=0.4086 success=True lines=545
+ANCHOR_WARNING | final_join_detail_column | role_table '#Step7' not found in 3000-char window before anchor — possible drift
+INSERTION 2 | phase=final_join_detail_column in=69316 out=469 time=9.85 cost=0.2267 success=True lines=14
+INSERTION 3 | phase=cleanup_drop in=69172 out=109 time=4.37 cost=0.2208 success=True lines=1
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | insertions=3 success=3 failed=0 input=245753 output=17149 time=209.79 cost=1.0296
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=30 in=56679 out=109 time=5.27 cost=0.1834 success=True lines=1
+INSERTION 2 | phase=breakdown_block anchor_line=891 ends_line=1557 in=57311 out=15973 time=175.19 cost=0.4232 success=True lines=666
+ANCHOR_WARNING | final_join_detail_column | role_table '#Step7' not in 3000-char window before anchor — possible drift
+INSERTION 3 | phase=final_join_detail_column anchor_line=1756 ends_line=1770 in=72719 out=660 time=13.14 cost=0.2397 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1881 ends_line=1956 in=72334 out=1065 time=22.87 cost=0.2447 success=True lines=75
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | insertions=4 success=4 failed=0 input=312433 output=33148 time=402.73 cost=1.4813
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=30 in=56281 out=109 time=4.34 cost=0.1822 success=True lines=1
+INSERTION 2 | phase=breakdown_block anchor_line=891 ends_line=1324 in=56902 out=13165 time=148.75 cost=0.3799 success=True lines=433
+INSERTION 3 | phase=final_join_detail_column anchor_line=1523 ends_line=1537 in=69747 out=668 time=14.43 cost=0.2310 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1648 ends_line=1702 in=69362 out=861 time=18.27 cost=0.2327 success=True lines=54
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | insertions=4 success=4 failed=0 input=305682 output=29610 time=362.22 cost=1.4080
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=30 in=56631 out=109 time=6.19 cost=0.1832 success=True lines=1
+INSERTION 2 | phase=breakdown_block anchor_line=891 ends_line=1400 in=57252 out=14037 time=164.52 cost=0.3940 success=True lines=509
+INSERTION 3 | phase=final_join_detail_column anchor_line=1674 ends_line=1688 in=70547 out=458 time=10.75 cost=0.2302 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1724 ends_line=1776 in=70501 out=766 time=14.82 cost=0.2347 success=True lines=52
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | insertions=4 success=4 failed=0 input=308330 output=30557 time=374.91 cost=1.4418
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=30 in=58602 out=109 time=4.38 cost=0.1891 success=True lines=1
+INSERTION 2 | phase=breakdown_block anchor_line=891 ends_line=1347 in=59223 out=13479 time=151.20 cost=0.3915 success=True lines=456
+INSERTION 3 | phase=final_join_detail_column anchor_line=1621 ends_line=1635 in=72041 out=445 time=10.31 cost=0.2345 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1671 ends_line=1732 in=72006 out=928 time=20.32 cost=0.2416 success=True lines=61
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | insertions=4 success=4 failed=0 input=315267 output=30550 time=361.04 cost=1.4508
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=30 in=57510 out=109 time=4.19 cost=0.1859 success=True lines=1
+INSERTION 2 | phase=breakdown_block anchor_line=891 ends_line=1312 in=58131 out=13005 time=147.11 cost=0.3812 success=True lines=421
+INSERTION 3 | phase=final_join_detail_column anchor_line=1586 ends_line=1600 in=70468 out=441 time=10.40 cost=0.2297 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1636 ends_line=1697 in=70429 out=925 time=18.76 cost=0.2369 success=True lines=61
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | insertions=4 success=4 failed=0 input=309933 output=30245 time=362.00 cost=1.4419
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=30 in=56330 out=109 time=4.27 cost=0.1823 success=True lines=1
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=891 ends_line=1396 in=57459 out=14068 time=154.94 cost=0.3951 success=True lines=505
+INSERTION 3 | phase=final_join_detail_column anchor_line=1598 ends_line=1612 in=69805 out=467 time=12.27 cost=0.2281 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1720 ends_line=1774 in=69619 out=849 time=17.47 cost=0.2333 success=True lines=54
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | insertions=4 success=4 failed=0 input=306612 output=29765 time=354.37 cost=1.4131
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=32 in=53867 out=163 time=4.36 cost=0.1759 success=True lines=3
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=32 in=53837 out=163 time=3.44 cost=0.1758 success=True lines=3
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=893 ends_line=1399 in=55257 out=14952 time=165.54 cost=0.4019 success=True lines=506
+INSERTION 3 | phase=final_join_detail_column anchor_line=1673 ends_line=1687 in=68059 out=458 time=9.22 cost=0.2229 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1723 ends_line=1794 in=68520 out=996 time=15.59 cost=0.2323 success=True lines=71
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | insertions=4 success=4 failed=0 input=299124 output=17799 time=216.34 cost=1.2235
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=32 in=53880 out=163 time=8.51 cost=0.1759 success=True lines=3
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=32 in=53829 out=163 time=4.37 cost=0.1758 success=True lines=3
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=893 ends_line=1473 in=55260 out=14901 time=163.22 cost=0.4011 success=True lines=580
+INSERTION 3 | phase=final_join_detail_column anchor_line=1675 ends_line=1689 in=68060 out=463 time=11.94 cost=0.2229 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1797 ends_line=1870 in=68308 out=1049 time=16.15 cost=0.2325 success=True lines=73
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | insertions=4 success=4 failed=0 input=298908 output=17815 time=225.45 cost=1.2231
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=32 in=53835 out=163 time=3.61 cost=0.1756 success=True lines=3
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=32 in=53839 out=163 time=3.26 cost=0.1757 success=True lines=3
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=893 ends_line=1608 in=55935 out=15755 time=169.35 cost=0.4158 success=True lines=715
+INSERTION 3 | phase=final_join_detail_column anchor_line=1882 ends_line=1896 in=68569 out=443 time=10.14 cost=0.2240 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1932 ends_line=2006 in=68982 out=1231 time=17.43 cost=0.2371 success=True lines=74
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete 1.sql | insertions=4 success=4 failed=0 input=300807 output=31414 time=363.19 cost=1.4321

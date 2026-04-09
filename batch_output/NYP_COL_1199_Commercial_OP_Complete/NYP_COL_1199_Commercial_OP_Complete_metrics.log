@@ -1,0 +1,65 @@
+INSERTION 1 | phase=cleanup_drop anchor_line=20 ends_line=24 in=27185 out=191 time=3.88 cost=0.0956 success=True lines=4
+SKIP | insertion=2 | Empty new_content returned
+INSERTION 3 | phase=final_join_detail_column anchor_line=761 ends_line=775 in=27518 out=443 time=12.80 cost=0.1004 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=811 ends_line=886 in=27961 out=1086 time=20.43 cost=0.1113 success=True lines=75
+FILE_SUMMARY | NYP_COL_1199_Commercial_OP_Complete.sql | insertions=4 success=3 failed=1 input=138876 output=12138 time=178.93 cost=0.6434
+INSERTION 1 | phase=cleanup_drop anchor_line=20 ends_line=24 in=27194 out=191 time=4.15 cost=0.0956 success=True lines=4
+INSERTION 1 | phase=cleanup_drop anchor_line=20 ends_line=24 in=28153 out=191 time=6.18 cost=0.0985 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ContractYearFrom', 'ContractYearTo', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=554 ends_line=1009 in=30099 out=10252 time=129.62 cost=0.2552 success=True lines=455
+INSERTION 3 | phase=final_join_detail_column anchor_line=1219 ends_line=1233 in=37871 out=443 time=21.05 cost=0.1314 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1269 ends_line=1344 in=38314 out=1080 time=16.78 cost=0.1423 success=True lines=75
+FILE_SUMMARY | NYP_COL_1199_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=161523 output=23115 time=320.30 cost=0.8871
+FATAL | HYBRID_WRONG | 'eps' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'knee_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'cardiac_cath' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'ptca' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'sleep_studies' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'ptca_cardiac_cath_qualifier' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'ptca_cardiac_cath' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'gamma_knife' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'shoulder_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'hip_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+INSERTION 1 | phase=cleanup_drop anchor_line=20 ends_line=24 in=28610 out=191 time=3.87 cost=0.0968 success=True lines=4
+RN_CONSISTENCY_FAIL | ['rn_CAT']
+FATAL | HYBRID_WRONG | 'cardiac_cath' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'hip_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'sleep_studies' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'ptca_cardiac_cath' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'shoulder_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'ptca' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'gamma_knife' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'eps' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'knee_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'gamma_knife' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'ptca' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'ptca_cardiac_cath' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'knee_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'eps' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'sleep_studies' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'cardiac_cath' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'hip_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'shoulder_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+INSERTION 1 | phase=cleanup_drop anchor_line=20 ends_line=24 in=28548 out=191 time=3.87 cost=0.0966 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'BillCharges', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=554 ends_line=1088 in=32836 out=17288 time=234.84 cost=0.3659 success=True lines=534
+INSERTION 3 | phase=final_join_detail_column anchor_line=1298 ends_line=1311 in=39066 out=399 time=8.62 cost=0.1313 success=True lines=13
+IDEMPOTENT_SKIP | auditor_queries | signature found
+FILE_SUMMARY | NYP_COL_1199_Commercial_OP_Complete.sql | insertions=4 success=3 failed=0 input=155782 output=19641 time=272.24 cost=0.8026
+FATAL | HYBRID_WRONG | 'ptca' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'hip_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'gamma_knife' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'ptca_cardiac_cath' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'eps' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'cardiac_cath' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'knee_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'shoulder_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'sleep_studies' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+INSERTION 1 | phase=cleanup_drop anchor_line=20 ends_line=24 in=28616 out=191 time=3.61 cost=0.0968 success=True lines=4
+RN_CONSISTENCY_FAIL | ['rn_CAT']
+RN_CONSISTENCY_FAIL_RETRY | ['rn_CAT']
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'BillCharges', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=554 ends_line=987 in=32899 out=11937 time=150.80 cost=0.2859 success=True lines=433
+INSERTION 3 | phase=final_join_detail_column anchor_line=1197 ends_line=1210 in=37576 out=399 time=7.55 cost=0.1268 success=True lines=13
+INSERTION 4 | phase=auditor_queries anchor_line=1246 ends_line=1321 in=37961 out=1066 time=18.96 cost=0.1380 success=True lines=75
+FILE_SUMMARY | NYP_COL_1199_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=225555 output=24422 time=313.54 cost=1.0998

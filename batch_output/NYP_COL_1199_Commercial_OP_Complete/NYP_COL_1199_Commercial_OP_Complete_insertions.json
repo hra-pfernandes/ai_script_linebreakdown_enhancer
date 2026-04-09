@@ -1,0 +1,302 @@
+{
+  "session_info": {
+    "timestamp": "2026-04-01T11:52:30.462556",
+    "input_file": "C:\\Users\\pfernandes.HRA\\AI_Script_Enhancer\\input\\NYP_COL_1199_Commercial_OP_Complete.sql",
+    "approach": "Role-based anchor insertion v9 \u2014 INDICATOR_FLAG + rn_ naming + consistency retry",
+    "file_id": "e59d1a82-7bc7-433a-92b6-3f6cbe5050af",
+    "session_id": "ade7c104-cdbf-45d9-aea3-8e37c64aed99"
+  },
+  "analysis": {
+    "line_level_source_table": "#Step3",
+    "hierarchy_table": "#Step4",
+    "total_price_table": "#Step5",
+    "final_join_table": "#Step7",
+    "output_table": "#StepFinal",
+    "has_ncci_bundle": false,
+    "has_window_reduction": true,
+    "window_reduction_categories": [
+      "AS"
+    ],
+    "has_aggregate_date_step": true,
+    "hybrid_categories": [],
+    "max_categories": [
+      "as",
+      "PTCA_Cardiac_Cath_Qualifier",
+      "Cardiac_Cath",
+      "Shoulder_Replacement",
+      "ER",
+      "Hip_Replacement",
+      "Gamma_Knife",
+      "Sleep_Studies",
+      "PTCA",
+      "PTCA_Cardiac_Cath",
+      "EPS",
+      "Knee_Replacement"
+    ],
+    "sum_categories": [
+      "OP_Default",
+      "PT/OT/ST",
+      "Drugs",
+      "Blood",
+      "Fee_Schedule",
+      "Implants"
+    ],
+    "indicator_flag_categories": [
+      "COVID"
+    ],
+    "aggregate_date_raw": {
+      "columns": [
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Fee_Schedule",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Fee_Schedule1",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Fee_Schedule2",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "PT/OT/ST",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "AS",
+          "agg_fn": "MAX(AS1)+MAX(AS2)+MAX(AS3)+MAX(AS4)+MAX(AS5)+MAX(AS6)+MAX(AS7)+MAX(AS8)+MAX(AS9)+MAX(AS10)"
+        },
+        {
+          "column": "PTCA_Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA_Cardiac_Cath_Qualifier",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "EPS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Gamma_Knife",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Hip_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Knee_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Shoulder_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Implants",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Sleep_Studies",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "aggregate_enc_raw": {
+      "columns": [
+        {
+          "column": "Fee_Schedule",
+          "agg_fn": "SUM(Fee_Schedule)+SUM(Fee_Schedule1)+SUM(Fee_Schedule2) combined as Fee_Schedule"
+        },
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "PT/OT/ST",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "AS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA_Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA_Cardiac_Cath_Qualifier",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "EPS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Gamma_Knife",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Hip_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Knee_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Shoulder_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Implants",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Sleep_Studies",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "window_reduction_lead_partitions": [
+      {
+        "category": "AS",
+        "slot_columns": [
+          "AS1",
+          "AS2",
+          "AS3",
+          "AS4",
+          "AS5",
+          "AS6",
+          "AS7",
+          "AS8",
+          "AS9",
+          "AS10"
+        ],
+        "lead_partition_by": "EncounterID_only",
+        "branked_partition_by": "EncounterID_only",
+        "bslots_group_by": "EncounterID_only"
+      }
+    ]
+  },
+  "missing_phases": [],
+  "insertions": [
+    {
+      "insertion_id": 1,
+      "phase": "cleanup_drop",
+      "description": "DROP TABLE safety lines for #bRanked, #bSlots, #LineBreakdown, #recon_temp in the cleanup block",
+      "role_table": "cleanup_block",
+      "anchor_preview": "IF OBJECT_ID('tempdb..#StepFinal') IS NOT NULL DROP TABLE #StepFinal",
+      "anchor_line_number": 20,
+      "insertion_ends_at_line": 24,
+      "lines_added": 4,
+      "chars_added": 291,
+      "new_content_preview": "IF OBJECT_ID('tempdb..#bRanked')       IS NOT NULL DROP TABLE #bRanked\nIF OBJECT_ID('tempdb..#bSlots')        IS NOT NULL DROP TABLE #bSlots\nIF OBJECT_ID('tempdb..#LineBreakdown') IS NOT NULL DROP TABLE #LineBreakdown\nIF OBJECT_ID('tempdb..#recon_temp')    IS NOT NULL DROP TABLE #recon_temp"
+    },
+    {
+      "insertion_id": 2,
+      "phase": "breakdown_block",
+      "description": "#bRanked + #bSlots + SELECT INTO #LineBreakdown",
+      "role_table": "#Step4",
+      "anchor_preview": "INTO #Step4\nFROM #Step3_2",
+      "anchor_line_number": 554,
+      "insertion_ends_at_line": 987,
+      "lines_added": 433,
+      "chars_added": 22213,
+      "new_content_preview": "\n--=======================================================================\n-- *** [PRICE BREAKDOWN - INSERTED SECTION] ***\n-- SOURCE  : #Step3 (post-LEAD slot computation, pre-hierarchy)\n--           joined to #Step4 for encounter-level suppression decisions.\n--           #Step2 joined for Sequence, Quantity, BillCharges (not in #Step3).\n--\n-- MAX CATEGORIES (one winner per encounter, PARTITION BY EncounterID):\n--   ER, EPS, Gamma_Knife, Hip_Replacement, Knee_Replacement,\n--   Shoulder_Replacement, PTCA_Cardiac_Cath, PTCA_Cardiac_Cath_Qualifier,\n--   Sleep_Studies\n--\n-- MAX CATEGORIES that are",
+      "confirmed_output_columns": [
+        "EncounterID",
+        "Sequence",
+        "ProcedureCode",
+        "RevenueCode",
+        "ServiceDate",
+        "BilledAmount",
+        "Quantity",
+        "BillCharges",
+        "ServiceCategory",
+        "PricingMethod",
+        "LinePayment",
+        "BundledByNCCI"
+      ]
+    },
+    {
+      "insertion_id": 3,
+      "phase": "final_join_detail_column",
+      "description": "Price_Breakdown_Detail correlated subquery as last column in FINAL_JOIN SELECT",
+      "role_table": "#Step7",
+      "anchor_preview": "Into #Step7",
+      "anchor_line_number": 1197,
+      "insertion_ends_at_line": 1210,
+      "lines_added": 13,
+      "chars_added": 622,
+      "new_content_preview": ", [Price_Breakdown_Detail] = (\n\t\tSELECT STRING_AGG(\n\t\t\t'Seq:'  + CAST(lb.[Sequence]      AS VARCHAR(MAX)) +\n\t\t\t' CPT:' + ISNULL(CAST(lb.[ProcedureCode] AS VARCHAR(MAX)), '') +\n\t\t\t' Rev:' + ISNULL(CAST(lb.[RevenueCode]   AS VARCHAR(MAX)), '') +\n\t\t\t' | Cat:'     + CAST(lb.[ServiceCategory]  AS VARCHAR(MAX)) +\n\t\t\t' | Billed:$' + CAST(CONVERT(DECIMAL(12,2), ISNULL(lb.[BilledAmount], 0)) AS VARCHAR(MAX)) +\n\t\t\t' | Paid:$'   + CAST(CONVERT(DECIMAL(12,2), ISNULL(lb.[LinePayment],   0)) AS VARCHAR(MAX))\n\t\t, ' || ')\n\t\tWITHIN GROUP (ORDER BY lb.[Sequence])\n\t\tFROM #LineBreakdown lb\n\t\tWHERE lb.[EncounterID"
+    },
+    {
+      "insertion_id": 4,
+      "phase": "auditor_queries",
+      "description": "Auditor Query 1 + INSERT + Query 2 reconciliation appended after final OUTPUT SELECT",
+      "role_table": "#StepFinal",
+      "anchor_preview": "order by count(*) desc",
+      "anchor_line_number": 1246,
+      "insertion_ends_at_line": 1321,
+      "lines_added": 75,
+      "chars_added": 2829,
+      "new_content_preview": "\n\n--======================================================================\n-- *** [AUDITOR PRICE BREAKDOWN SUMMARY QUERIES - INSERTED SECTION] ***\n-- Run these after the main script completes.\n-- #LineBreakdown = one row per charge line (EncounterID + Sequence).\n-- ServiceCategory = final hierarchy decision (from #Step4 suppression logic).\n-- 'Suppressed_By_Hierarchy' = line matched a category but a higher-tier\n--   category won for this encounter.\n-- 'No_Payment_Category' = line did not match any pricing pattern.\n-- BundledByNCCI = 0 (no NCCI bundle step in this script).\n--==================="
+    }
+  ],
+  "classification_issues": []
+}

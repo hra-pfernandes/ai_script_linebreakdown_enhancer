@@ -1,0 +1,349 @@
+{
+  "session_info": {
+    "timestamp": "2026-04-01T11:46:27.556622",
+    "input_file": "C:\\Users\\pfernandes.HRA\\AI_Script_Enhancer\\input\\NYP_COL_Cigna_Commercial_OP_Complete.sql",
+    "approach": "Role-based anchor insertion v9 \u2014 INDICATOR_FLAG + rn_ naming + consistency retry",
+    "file_id": "3ebb4574-4c28-4885-91b4-6d1679e20c59",
+    "session_id": "53f07da3-afb9-4979-b812-091171e5d0e8"
+  },
+  "analysis": {
+    "line_level_source_table": "#Step3",
+    "hierarchy_table": "#Step4",
+    "total_price_table": "#Step5",
+    "final_join_table": "#Step7",
+    "output_table": "#StepFinal",
+    "has_ncci_bundle": false,
+    "has_window_reduction": true,
+    "window_reduction_categories": [
+      "AS"
+    ],
+    "has_aggregate_date_step": true,
+    "hybrid_categories": [
+      "Dialysis",
+      "ECT",
+      "IOP"
+    ],
+    "max_categories": [
+      "PTCA",
+      "Clinic",
+      "Cardiac_Cath",
+      "Shoulder_Replacement",
+      "Laparoscopy",
+      "Lithotripsy",
+      "Knee_Replacement",
+      "AS",
+      "Gamma_Knife",
+      "Cardiac_Rehab",
+      "Vascular_Angioplasty",
+      "Hip_Replacement",
+      "ER"
+    ],
+    "sum_categories": [
+      "Radiology",
+      "Blood",
+      "Drugs",
+      "OP_Default",
+      "Implants",
+      "Lab",
+      "Miscellaneous",
+      "PT/OT/ST"
+    ],
+    "indicator_flag_categories": [
+      "COVID"
+    ],
+    "aggregate_date_raw": {
+      "columns": [
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "AS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Laparoscopy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Lithotripsy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Rehab",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Hip_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Knee_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Shoulder_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Gamma_Knife",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Vascular_Angioplasty",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Implants",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Dialysis",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Lab",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Radiology",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "PT/OT/ST",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ECT",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "IOP",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Miscellaneous",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Clinic",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "aggregate_enc_raw": {
+      "columns": [
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "AS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Laparoscopy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Lithotripsy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Rehab",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Hip_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Knee_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Shoulder_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Gamma_Knife",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Vascular_Angioplasty",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Implants",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Dialysis",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Lab",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Radiology",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "PT/OT/ST",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ECT",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "IOP",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Miscellaneous",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Clinic",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "window_reduction_lead_partitions": [
+      {
+        "category": "AS",
+        "slot_columns": [
+          "AS1",
+          "AS2",
+          "AS3",
+          "AS4",
+          "AS5",
+          "AS6",
+          "AS7",
+          "AS8",
+          "AS9",
+          "AS10"
+        ],
+        "lead_partition_by": "EncounterID_only",
+        "branked_partition_by": "EncounterID_only",
+        "bslots_group_by": "EncounterID_only"
+      }
+    ]
+  },
+  "missing_phases": [],
+  "insertions": [
+    {
+      "insertion_id": 1,
+      "phase": "cleanup_drop",
+      "description": "DROP TABLE safety lines for #bRanked, #bSlots, #LineBreakdown, #recon_temp in the cleanup block",
+      "role_table": "cleanup_block",
+      "anchor_preview": "IF OBJECT_ID('tempdb..#StepFinal') IS NOT NULL DROP TABLE #StepFinal",
+      "anchor_line_number": 20,
+      "insertion_ends_at_line": 24,
+      "lines_added": 4,
+      "chars_added": 291,
+      "new_content_preview": "IF OBJECT_ID('tempdb..#bRanked')       IS NOT NULL DROP TABLE #bRanked\nIF OBJECT_ID('tempdb..#bSlots')        IS NOT NULL DROP TABLE #bSlots\nIF OBJECT_ID('tempdb..#LineBreakdown') IS NOT NULL DROP TABLE #LineBreakdown\nIF OBJECT_ID('tempdb..#recon_temp')    IS NOT NULL DROP TABLE #recon_temp"
+    },
+    {
+      "insertion_id": 2,
+      "phase": "breakdown_block",
+      "description": "#bRanked + #bSlots + SELECT INTO #LineBreakdown",
+      "role_table": "#Step4",
+      "anchor_preview": ", [COVID]\n\nINTO #Step4\nFROM #Step3_2",
+      "anchor_line_number": 654,
+      "insertion_ends_at_line": 1187,
+      "lines_added": 533,
+      "chars_added": 25710,
+      "new_content_preview": "\n\n--=======================================================================\n-- *** [PRICE BREAKDOWN - INSERTED SECTION] ***\n-- SOURCE  : #Step3 (post-LEAD slot computation, pre-hierarchy)\n--           joined to #Step4 for encounter-level suppression decisions.\n--\n-- MAX CATEGORIES (one winner per encounter, PARTITION BY EncounterID):\n--   ER, Gamma_Knife, Laparoscopy, Cardiac_Cath, PTCA, Lithotripsy,\n--   Cardiac_Rehab, Hip_Replacement, Knee_Replacement, Shoulder_Replacement,\n--   Vascular_Angioplasty, Clinic\n--   NOTE: Per aggregation evidence all of the above are MAX in both\n--   AGGREGATE_D",
+      "confirmed_output_columns": [
+        "EncounterID",
+        "Sequence",
+        "ProcedureCode",
+        "RevenueCode",
+        "ServiceDate",
+        "BilledAmount",
+        "Quantity",
+        "BillCharges",
+        "ServiceCategory",
+        "PricingMethod",
+        "LinePayment",
+        "BundledByNCCI"
+      ]
+    },
+    {
+      "insertion_id": 3,
+      "phase": "final_join_detail_column",
+      "description": "Price_Breakdown_Detail correlated subquery as last column in FINAL_JOIN SELECT",
+      "role_table": "#Step7",
+      "anchor_preview": "Into #Step7",
+      "anchor_line_number": 1386,
+      "insertion_ends_at_line": 1399,
+      "lines_added": 13,
+      "chars_added": 627,
+      "new_content_preview": ", [Price_Breakdown_Detail] = (\n\t\tSELECT STRING_AGG(\n\t\t\t'Seq:'  + CAST(lb.[Sequence]        AS VARCHAR(MAX)) +\n\t\t\t' CPT:' + ISNULL(CAST(lb.[ProcedureCode]  AS VARCHAR(MAX)), '') +\n\t\t\t' Rev:' + ISNULL(CAST(lb.[RevenueCode]    AS VARCHAR(MAX)), '') +\n\t\t\t' | Cat:'     + CAST(lb.[ServiceCategory]   AS VARCHAR(MAX)) +\n\t\t\t' | Billed:$' + CAST(CONVERT(DECIMAL(12,2), ISNULL(lb.[BilledAmount], 0)) AS VARCHAR(MAX)) +\n\t\t\t' | Paid:$'   + CAST(CONVERT(DECIMAL(12,2), ISNULL(lb.[LinePayment],   0)) AS VARCHAR(MAX))\n\t\t, ' || ')\n\t\tWITHIN GROUP (ORDER BY lb.[Sequence])\n\t\tFROM #LineBreakdown lb\n\t\tWHERE lb.[Encoun"
+    },
+    {
+      "insertion_id": 4,
+      "phase": "auditor_queries",
+      "description": "Auditor Query 1 + INSERT + Query 2 reconciliation appended after final OUTPUT SELECT",
+      "role_table": "#StepFinal",
+      "anchor_preview": "Select [Status], count(*)\nFrom #StepFinal\nGroup by [Status]\norder by count(*) desc",
+      "anchor_line_number": 1437,
+      "insertion_ends_at_line": 1512,
+      "lines_added": 75,
+      "chars_added": 2828,
+      "new_content_preview": "\n\n--======================================================================\n-- *** [AUDITOR PRICE BREAKDOWN SUMMARY QUERIES - INSERTED SECTION] ***\n-- Run these after the main script completes.\n-- #LineBreakdown = one row per charge line (EncounterID + Sequence).\n-- ServiceCategory = final hierarchy decision (from #Step4 suppression logic).\n-- 'Suppressed_By_Hierarchy' = line matched a category but a higher-tier\n--   category won for this encounter.\n-- 'No_Payment_Category' = line did not match any pricing pattern.\n-- BundledByNCCI = 0 (no NCCI bundle step in this script).\n--==================="
+    }
+  ],
+  "classification_issues": []
+}

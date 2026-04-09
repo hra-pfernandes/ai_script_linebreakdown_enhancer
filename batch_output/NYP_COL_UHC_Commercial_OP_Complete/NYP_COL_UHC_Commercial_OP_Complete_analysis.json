@@ -1,0 +1,290 @@
+{
+  "analysis": {
+    "line_level_source_table": "#Step3",
+    "hierarchy_table": "#Step4",
+    "total_price_table": "#Step5",
+    "final_join_table": "#Step7",
+    "output_table": "#StepFinal",
+    "has_ncci_bundle": false,
+    "has_window_reduction": true,
+    "window_reduction_categories": [
+      "AS"
+    ],
+    "has_aggregate_date_step": true,
+    "hybrid_categories": [
+      "Chemotherapy"
+    ],
+    "max_categories": [
+      "ECT",
+      "Gamma_Knife",
+      "PTCA",
+      "AS",
+      "Cardiac_Cath",
+      "Endoscopy",
+      "ER",
+      "Clinic"
+    ],
+    "sum_categories": [
+      "OP_Default",
+      "Blood",
+      "IV_Therapy",
+      "Radiology",
+      "Lab",
+      "Provenge_Drugs",
+      "Implants",
+      "Ambulance",
+      "Radiation_Therapy",
+      "Miscellaneous",
+      "PET_Scan",
+      "Drugs"
+    ],
+    "indicator_flag_categories": [
+      "COVID"
+    ],
+    "aggregate_date_raw": {
+      "columns": [
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "AS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Endoscopy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Gamma_Knife",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Implants",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Provenge_Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Chemotherapy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "IV_Therapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Lab",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Radiology",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Radiation_Therapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "PET_Scan",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Ambulance",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Miscellaneous",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Clinic",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "ECT",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "aggregate_enc_raw": {
+      "columns": [
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "AS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Endoscopy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Gamma_Knife",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Implants",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Provenge_Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Chemotherapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "IV_Therapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Lab",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Radiology",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Radiation_Therapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "PET_Scan",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Ambulance",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Miscellaneous",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Clinic",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "ECT",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "window_reduction_lead_partitions": [
+      {
+        "category": "AS",
+        "slot_columns": [
+          "AS1",
+          "AS2",
+          "AS3",
+          "AS4",
+          "AS5",
+          "AS6",
+          "AS7",
+          "AS8",
+          "AS9",
+          "AS10"
+        ],
+        "lead_partition_by": "EncounterID_only",
+        "branked_partition_by": "EncounterID_only",
+        "bslots_group_by": "EncounterID_only"
+      }
+    ]
+  },
+  "insertion_plan": [
+    {
+      "insertion_id": 1,
+      "phase": "cleanup_drop",
+      "description": "DROP TABLE safety lines for #bRanked, #bSlots, #LineBreakdown, #recon_temp in the cleanup block",
+      "role_anchor_table": "cleanup_block",
+      "anchor_snippet": "IF OBJECT_ID('tempdb..#StepFINal') IS NOT NULL DROP TABLE #StepFINal",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 2,
+      "phase": "breakdown_block",
+      "description": "#bRanked + #bSlots + SELECT INTO #LineBreakdown",
+      "role_anchor_table": "#Step4",
+      "anchor_snippet": ", [COVID]\n\nINTO #Step4\nFROM #Step3_2",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 3,
+      "phase": "final_join_detail_column",
+      "description": "Price_Breakdown_Detail correlated subquery as last column in FINAL_JOIN SELECT, before INTO #Step7",
+      "role_anchor_table": "#Step7",
+      "anchor_snippet": "INto #Step7",
+      "insert_position": "before",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 4,
+      "phase": "auditor_queries",
+      "description": "Auditor Query 1 + INSERT + Query 2 reconciliation appended after final OUTPUT SELECT",
+      "role_anchor_table": "#StepFinal",
+      "anchor_snippet": "Select [Status], count(*)\nFrom #StepFinal\nGroup by [Status]\norder by count(*) desc",
+      "insert_position": "after",
+      "occurrence_index": 1
+    }
+  ],
+  "missing_phases": [],
+  "classification_issues": [],
+  "classification_retries": 1
+}

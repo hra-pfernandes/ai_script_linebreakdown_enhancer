@@ -1,0 +1,120 @@
+{
+  "analysis": {
+    "line_level_source_table": "#Step3",
+    "hierarchy_table": "#Step4",
+    "total_price_table": "#Step5",
+    "final_join_table": "#Step7",
+    "output_table": "#StepFinal",
+    "has_ncci_bundle": false,
+    "has_window_reduction": false,
+    "window_reduction_categories": [],
+    "has_aggregate_date_step": true,
+    "hybrid_categories": [],
+    "max_categories": [],
+    "sum_categories": [
+      "ER_In_Claim",
+      "Non_ER"
+    ],
+    "indicator_flag_categories": [],
+    "aggregate_date_raw": {
+      "columns": [
+        {
+          "column": "ER_In_Claim",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Non_ER",
+          "agg_fn": "SUM"
+        }
+      ]
+    },
+    "aggregate_enc_raw": {
+      "columns": [
+        {
+          "column": "ER_In_Claim",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Non_ER",
+          "agg_fn": "SUM"
+        }
+      ]
+    },
+    "window_reduction_lead_partitions": [],
+    "line_level_has_narrow_column_list": true,
+    "line_level_column_notes": {
+      "present_in_Step3": [
+        "EncounterID",
+        "ServiceDateTo",
+        "ER_In_Claim",
+        "Non_ER"
+      ],
+      "absent_from_Step3": [
+        "Sequence",
+        "ProcedureCode",
+        "RevenueCode",
+        "ProcedureCodeNumeric",
+        "Modifier1",
+        "ServiceDateFrom",
+        "OriginalPayment",
+        "Amount",
+        "BillCharges",
+        "Quantity",
+        "Plan",
+        "Payer01Code",
+        "Payer01Name"
+      ],
+      "payment_columns_requiring_join_back_to_Step2": [],
+      "informational_columns_requiring_null_placeholder": [
+        "Sequence",
+        "ProcedureCode",
+        "RevenueCode",
+        "Amount",
+        "BillCharges",
+        "Quantity"
+      ],
+      "notes": "#Step3 was built with an explicit narrow column list (only EncounterID, ServiceDateTo, ER_In_Claim, Non_ER). Neither ER_In_Claim nor Non_ER requires BillCharges or any external column for their LinePayment computation \u2014 both values are already the fully computed dollar amounts from #Step2 (Round(0.85*Amount,2) and Round(1.00*Amount,2) respectively). Therefore no JOIN back to #Step2 is needed for payment-critical columns. Display columns (Sequence, ProcedureCode, RevenueCode, Amount, BillCharges, Quantity) are absent and should use NULL placeholders in #LineBreakdown."
+    }
+  },
+  "insertion_plan": [
+    {
+      "insertion_id": 1,
+      "phase": "cleanup_drop",
+      "description": "DROP TABLE safety lines for #bRanked, #bSlots, #LineBreakdown in the cleanup block",
+      "role_anchor_table": "cleanup_block",
+      "anchor_snippet": "IF OBJECT_ID('tempdb..#StepFinal') IS NOT NULL DROP TABLE #StepFinal",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 2,
+      "phase": "breakdown_block",
+      "description": "#bRanked + optional #bSlots + SELECT INTO #LineBreakdown",
+      "role_anchor_table": "#Step4",
+      "anchor_snippet": ",[ER_In_Claim]\n\t,[Non_ER]\t\t\n\n\tINTO #Step4\n\tFROM #Step3_2",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 3,
+      "phase": "final_join_detail_column",
+      "description": "Price_Breakdown_Detail correlated subquery as last column in FINAL_JOIN SELECT",
+      "role_anchor_table": "#Step7",
+      "anchor_snippet": "Into #Step7",
+      "insert_position": "before",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 4,
+      "phase": "auditor_queries",
+      "description": "Auditor Query 1 + INSERT + Query 2 reconciliation appended after final OUTPUT SELECT",
+      "role_anchor_table": "#StepFinal",
+      "anchor_snippet": "Select [Status], count(*)\n\tFrom #StepFinal\n\tGroup by [Status]\n\torder by count(*) desc",
+      "insert_position": "after",
+      "occurrence_index": 1
+    }
+  ],
+  "missing_phases": [],
+  "classification_issues": [],
+  "classification_retries": 0
+}

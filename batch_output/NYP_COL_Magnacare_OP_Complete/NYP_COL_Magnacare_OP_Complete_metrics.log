@@ -1,0 +1,13 @@
+INSERTION 1 | phase=cleanup_drop anchor_line=13 ends_line=17 in=5045 out=191 time=3.03 cost=0.0292 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ContractYearFrom', 'ContractYearTo', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=138 ends_line=287 in=6775 out=2349 time=40.40 cost=0.0667 success=True lines=149
+INSERTION 3 | phase=final_join_detail_column anchor_line=423 ends_line=437 in=7545 out=496 time=8.79 cost=0.0412 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=476 ends_line=552 in=8015 out=1114 time=16.20 cost=0.0519 success=True lines=76
+FILE_SUMMARY | NYP_COL_Magnacare_OP_Complete.sql | insertions=4 success=4 failed=0 input=32623 output=4918 time=82.72 cost=0.2275
+FATAL | HYBRID_WRONG | 'clinic' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+INSERTION 1 | phase=cleanup_drop anchor_line=13 ends_line=17 in=5334 out=191 time=3.21 cost=0.0270 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'BillCharges', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=138 ends_line=342 in=9406 out=3369 time=55.84 cost=0.0869 success=True lines=204
+INSERTION 3 | phase=final_join_detail_column anchor_line=475 ends_line=488 in=8804 out=403 time=6.98 cost=0.0406 success=True lines=13
+INSERTION 4 | phase=auditor_queries anchor_line=530 ends_line=610 in=9245 out=1184 time=20.26 cost=0.0536 success=True lines=80
+FILE_SUMMARY | NYP_COL_Magnacare_OP_Complete.sql | insertions=4 success=4 failed=0 input=43158 output=6009 time=104.51 cost=0.2683

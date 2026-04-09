@@ -1,0 +1,51 @@
+{
+  "analysis": {
+    "line_level_source_table": "#Step2",
+    "hierarchy_table": "#Step4",
+    "total_price_table": "#Step5",
+    "final_join_table": "#Step7",
+    "output_table": "#StepFinal",
+    "has_ncci_bundle": false,
+    "has_window_reduction": false,
+    "window_reduction_categories": []
+  },
+  "insertion_plan": [
+    {
+      "insertion_id": 1,
+      "phase": "cleanup_drop",
+      "description": "DROP TABLE safety lines for #bRanked, #bSlots, #LineBreakdown, and #recon_temp added to the cleanup block at the top of the script",
+      "role_anchor_table": "cleanup_block",
+      "anchor_snippet": "IF OBJECT_ID('tempdb..#StepFinal') IS NOT NULL DROP TABLE #StepFinal",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 2,
+      "phase": "breakdown_block",
+      "description": "#bRanked temp table (ROW_NUMBER ranks for OP_Default as the only MAX/SUM category) + SELECT INTO #LineBreakdown (no #bSlots needed \u2014 no WINDOW_REDUCTION categories exist). Source is #Step2 (line-level pricing table). Joined to #Step4 (hierarchy/suppression table). OP_Default is the sole category; classified as SUM in AGGREGATE_ENC (#Step3_1 and #Step3_2 both use MAX, but at encounter level there is only one category and no suppression IIF chain \u2014 #Step4 passes OP_Default straight through, so all matching lines pay). BundledByNCCI hardcoded to 0 (no NCCI bundle step exists). Quantity confirmed present in #Step2 column list.",
+      "role_anchor_table": "#Step4",
+      "anchor_snippet": "INTO #Step4\r\nFROM #Step3_2",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 3,
+      "phase": "final_join_detail_column",
+      "description": "Price_Breakdown_Detail correlated subquery added as the last column in the FINAL_JOIN SELECT, immediately before the INTO #Step7 clause",
+      "role_anchor_table": "#Step7",
+      "anchor_snippet": "Into #Step7",
+      "insert_position": "before",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 4,
+      "phase": "auditor_queries",
+      "description": "Auditor Query 1 (full line-level detail SELECT from #LineBreakdown) + INSERT INTO [Automation].[dbo].[LineBreakdown_Results] + Query 2 (reconciliation: SUM(LinePayment) per EncounterID from #LineBreakdown vs Price in #Step5) appended after the final OUTPUT SELECT statements",
+      "role_anchor_table": "#StepFinal",
+      "anchor_snippet": "Select [Status], count(*)\r\nFrom #StepFinal\r\nGroup by [Status]\r\norder by count(*) desc",
+      "insert_position": "after",
+      "occurrence_index": 1
+    }
+  ],
+  "missing_phases": []
+}

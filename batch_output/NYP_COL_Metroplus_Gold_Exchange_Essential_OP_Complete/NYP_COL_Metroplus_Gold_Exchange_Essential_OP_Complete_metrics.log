@@ -1,0 +1,18 @@
+INSERTION 1 | phase=cleanup_drop anchor_line=15 ends_line=19 in=5828 out=191 time=3.10 cost=0.0315 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ContractYearFrom', 'ContractYearTo', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=120 ends_line=242 in=7525 out=2053 time=34.00 cost=0.0645 success=True lines=122
+INSERTION 3 | phase=final_join_detail_column anchor_line=377 ends_line=391 in=7889 out=456 time=8.66 cost=0.0417 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=426 ends_line=502 in=8333 out=1093 time=16.66 cost=0.0526 success=True lines=76
+FILE_SUMMARY | NYP_COL_Metroplus_Gold_Exchange_Essential_OP_Complete.sql | insertions=4 success=4 failed=0 input=34603 output=9078 time=147.36 cost=0.2958
+INSERTION 1 | phase=cleanup_drop anchor_line=15 ends_line=19 in=5147 out=191 time=3.25 cost=0.0264 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'BillCharges', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=120 ends_line=346 in=9186 out=3494 time=53.37 cost=0.0881 success=True lines=226
+INSERTION 3 | phase=final_join_detail_column anchor_line=480 ends_line=493 in=8640 out=399 time=6.59 cost=0.0400 success=True lines=13
+IDEMPOTENT_SKIP | auditor_queries | signature found
+FILE_SUMMARY | NYP_COL_Metroplus_Gold_Exchange_Essential_OP_Complete.sql | insertions=4 success=3 failed=0 input=32871 output=4893 time=80.73 cost=0.2126
+INSERTION 1 | phase=cleanup_drop anchor_line=15 ends_line=19 in=5592 out=191 time=4.03 cost=0.0278 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'BillCharges', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=120 ends_line=283 in=9651 out=2531 time=39.34 cost=0.0750 success=True lines=163
+INSERTION 3 | phase=final_join_detail_column anchor_line=417 ends_line=430 in=8306 out=399 time=6.85 cost=0.0390 success=True lines=13
+INSERTION 4 | phase=auditor_queries anchor_line=466 ends_line=541 in=8745 out=1102 time=17.13 cost=0.0509 success=True lines=75
+FILE_SUMMARY | NYP_COL_Metroplus_Gold_Exchange_Essential_OP_Complete.sql | insertions=4 success=4 failed=0 input=42637 output=5449 time=91.19 cost=0.2584

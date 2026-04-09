@@ -1,0 +1,42 @@
+ERROR | NYP_COL_Aetna_Commercial_OP_Complete.sql | Analysis JSON parse failed: JSON appears truncated (contains ellipsis)
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=33 in=58630 out=191 time=4.43 cost=0.1894 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=894 ends_line=1600 in=62828 out=16729 time=179.48 cost=0.4501 success=True lines=706
+INSERTION 3 | phase=final_join_detail_column anchor_line=1874 ends_line=1889 in=74323 out=490 time=10.17 cost=0.2410 success=True lines=15
+INSERTION 4 | phase=auditor_queries anchor_line=1935 ends_line=2015 in=74601 out=1220 time=20.25 cost=0.2528 success=True lines=80
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=382159 output=23471 time=276.12 cost=1.5624
+FATAL | SUM_IS_MAX | 'clinic' is in sum_categories but AGGREGATE_ENC uses MAX(). Plain SUM LinePayment will overpay.
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=33 in=55583 out=191 time=4.33 cost=0.1774 success=True lines=4
+RN_CONSISTENCY_FAIL | ['rn_CAT']
+RN_CONSISTENCY_FAIL_RETRY | ['rn_X']
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'BillCharges', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=894 ends_line=1566 in=59770 out=17582 time=184.03 cost=0.4508 success=True lines=672
+INSERTION 3 | phase=final_join_detail_column anchor_line=1840 ends_line=1853 in=71528 out=401 time=9.80 cost=0.2284 success=True lines=13
+INSERTION 4 | phase=auditor_queries anchor_line=1889 ends_line=1965 in=71907 out=1104 time=18.68 cost=0.2400 success=True lines=76
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=427492 output=38352 time=429.30 cost=1.9121
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=33 in=57441 out=191 time=5.75 cost=0.1833 success=True lines=4
+FATAL | CONTRACT_PERIOD_GAP | ContractEffectiveDateFrom covers 9 of 12 expected periods. Missing date_from values: [].
+CONTRACT_YEAR_FAIL_RETRY | ['CONTRACT_PERIOD_GAP | ContractEffectiveDateFrom covers 9 of 12 expected periods. Missing date_from values: [].']
+SKIP | insertion=2 | Contract date columns missing after retry
+INSERTION 3 | phase=final_join_detail_column anchor_line=1165 ends_line=1178 in=57749 out=400 time=6.81 cost=0.1874 success=True lines=13
+INSERTION 4 | phase=auditor_queries anchor_line=1214 ends_line=1289 in=58170 out=1071 time=19.86 cost=0.1987 success=True lines=75
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete.sql | insertions=4 success=3 failed=1 input=408550 output=43404 time=469.80 cost=1.9255
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=33 in=57941 out=191 time=4.27 cost=0.1848 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'BillCharges', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI', 'ContractEffectiveDateFrom', 'ContractEffectiveDateTo']
+INSERTION 2 | phase=breakdown_block anchor_line=894 ends_line=1788 in=62492 out=19228 time=205.70 cost=0.4840 success=True lines=894
+INSERTION 3 | phase=final_join_detail_column anchor_line=2062 ends_line=2079 in=76708 out=563 time=8.83 cost=0.2467 success=True lines=17
+IDEMPOTENT_SKIP | auditor_queries | signature found
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete.sql | insertions=4 success=3 failed=0 input=308545 output=24124 time=261.17 cost=1.3200
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=33 in=58346 out=191 time=9.73 cost=0.1860 success=True lines=4
+FATAL | CONTRACT_PERIOD_GAP | ContractEffectiveDateFrom covers 9 of 14 expected periods. Missing date_from values: []. Dates must appear as ISO literals (YYYY-MM-DD) in the CASE WHEN BETWEEN blocks.
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=33 in=58150 out=191 time=3.69 cost=0.1854 success=True lines=4
+SKIP | insertion=2 | Anchor not found in current SQL
+INSERTION 3 | phase=final_join_detail_column anchor_line=1165 ends_line=1178 in=58458 out=399 time=10.11 cost=0.1895 success=True lines=13
+INSERTION 4 | phase=auditor_queries anchor_line=1214 ends_line=1289 in=58899 out=1090 time=16.48 cost=0.2012 success=True lines=75
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete.sql | insertions=4 success=3 failed=1 input=287120 output=6086 time=76.63 cost=0.9851
+INSERTION 1 | phase=cleanup_drop anchor_line=29 ends_line=33 in=58752 out=191 time=4.36 cost=0.1872 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI', 'ContractEffectiveDateFrom', 'ContractEffectiveDateTo']
+INSERTION 2 | phase=breakdown_block anchor_line=894 ends_line=1668 in=63303 out=18690 time=191.95 cost=0.4784 success=True lines=774
+INSERTION 3 | phase=final_join_detail_column anchor_line=1942 ends_line=1959 in=77127 out=555 time=10.69 cost=0.2478 success=True lines=17
+INSERTION 4 | phase=auditor_queries anchor_line=1995 ends_line=2076 in=77679 out=1183 time=22.88 cost=0.2589 success=True lines=81
+FILE_SUMMARY | NYP_COL_Aetna_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=389076 output=25610 time=287.71 cost=1.6001

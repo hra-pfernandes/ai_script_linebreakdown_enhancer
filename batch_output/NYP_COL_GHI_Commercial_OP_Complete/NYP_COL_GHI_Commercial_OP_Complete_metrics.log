@@ -1,0 +1,19 @@
+INSERTION 1 | phase=cleanup_drop anchor_line=16 ends_line=20 in=15730 out=191 time=3.76 cost=0.0612 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ContractYearFrom', 'ContractYearTo', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=356 ends_line=707 in=17694 out=6832 time=87.09 cost=0.1667 success=True lines=351
+INSERTION 3 | phase=final_join_detail_column anchor_line=899 ends_line=913 in=22359 out=494 time=13.39 cost=0.0857 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=947 ends_line=1023 in=22817 out=1108 time=16.50 cost=0.0962 success=True lines=76
+FILE_SUMMARY | NYP_COL_GHI_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=94500 output=9402 time=143.80 cost=0.4692
+FATAL | HYBRID_WRONG | 'er' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+INSERTION 1 | phase=cleanup_drop anchor_line=16 ends_line=20 in=16870 out=191 time=5.00 cost=0.0616 success=True lines=4
+FATAL | HYBRID_WRONG | 'lab' is in hybrid_categories but evidence is AGGREGATE_DATE=SUM, AGGREGATE_ENC=SUM. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'er' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'diagnostics' is in hybrid_categories but evidence is AGGREGATE_DATE=SUM, AGGREGATE_ENC=SUM. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'radiology' is in hybrid_categories but evidence is AGGREGATE_DATE=SUM, AGGREGATE_ENC=SUM. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'radiation_therapy' is in hybrid_categories but evidence is AGGREGATE_DATE=SUM, AGGREGATE_ENC=SUM. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+INSERTION 1 | phase=cleanup_drop anchor_line=16 ends_line=20 in=16863 out=191 time=4.02 cost=0.0616 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'BillCharges', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=356 ends_line=763 in=21169 out=7902 time=110.01 cost=0.1902 success=True lines=407
+INSERTION 3 | phase=final_join_detail_column anchor_line=952 ends_line=965 in=24511 out=400 time=8.27 cost=0.0877 success=True lines=13
+INSERTION 4 | phase=auditor_queries anchor_line=1002 ends_line=1080 in=24943 out=1173 time=21.20 cost=0.1005 success=True lines=78
+FILE_SUMMARY | NYP_COL_GHI_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=120013 output=11111 time=167.26 cost=0.5673

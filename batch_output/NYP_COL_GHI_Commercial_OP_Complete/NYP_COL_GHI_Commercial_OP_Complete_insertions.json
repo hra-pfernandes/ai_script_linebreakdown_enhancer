@@ -1,0 +1,250 @@
+{
+  "session_info": {
+    "timestamp": "2026-04-01T13:46:21.423818",
+    "input_file": "C:\\Users\\pfernandes.HRA\\AI_Script_Enhancer\\input\\NYP_COL_GHI_Commercial_OP_Complete.sql",
+    "approach": "Role-based anchor insertion v9 \u2014 INDICATOR_FLAG + rn_ naming + consistency retry",
+    "file_id": "12475e2c-e952-48d0-8ac4-3de1724b6688",
+    "session_id": "0dd4fd5b-fee1-426f-8650-8e2955b390ae"
+  },
+  "analysis": {
+    "line_level_source_table": "#Step3",
+    "hierarchy_table": "#Step4",
+    "total_price_table": "#Step5",
+    "final_join_table": "#Step7",
+    "output_table": "#StepFinal",
+    "has_ncci_bundle": false,
+    "has_window_reduction": false,
+    "window_reduction_categories": [],
+    "has_aggregate_date_step": true,
+    "hybrid_categories": [
+      "Dialysis",
+      "Chemotherapy"
+    ],
+    "max_categories": [
+      "ER",
+      "Gamma_Knife",
+      "COVID",
+      "AS",
+      "Cardiac_Cath"
+    ],
+    "sum_categories": [
+      "Lab",
+      "Diagnostics",
+      "OP_Default",
+      "Fs_Default",
+      "Blood",
+      "Radiation_Therapy",
+      "Implants",
+      "Drugs",
+      "Radiology"
+    ],
+    "indicator_flag_categories": [],
+    "aggregate_date_raw": {
+      "columns": [
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Fs_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "AS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Gamma_Knife",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Implants",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Dialysis",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Chemotherapy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Lab",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Radiology",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Radiation_Therapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Diagnostics",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "aggregate_enc_raw": {
+      "columns": [
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Fs_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "AS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Gamma_Knife",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Implants",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Dialysis",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Chemotherapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Lab",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Radiology",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Radiation_Therapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Diagnostics",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "window_reduction_lead_partitions": []
+  },
+  "missing_phases": [],
+  "insertions": [
+    {
+      "insertion_id": 1,
+      "phase": "cleanup_drop",
+      "description": "DROP TABLE safety lines for #bRanked, #bSlots, #LineBreakdown, #recon_temp in the cleanup block",
+      "role_table": "cleanup_block",
+      "anchor_preview": "IF OBJECT_ID('tempdb..#StepFinal') IS NOT NULL DROP TABLE #StepFinal",
+      "anchor_line_number": 16,
+      "insertion_ends_at_line": 20,
+      "lines_added": 4,
+      "chars_added": 291,
+      "new_content_preview": "IF OBJECT_ID('tempdb..#bRanked')       IS NOT NULL DROP TABLE #bRanked\nIF OBJECT_ID('tempdb..#bSlots')        IS NOT NULL DROP TABLE #bSlots\nIF OBJECT_ID('tempdb..#LineBreakdown') IS NOT NULL DROP TABLE #LineBreakdown\nIF OBJECT_ID('tempdb..#recon_temp')    IS NOT NULL DROP TABLE #recon_temp"
+    },
+    {
+      "insertion_id": 2,
+      "phase": "breakdown_block",
+      "description": "#bRanked + #bSlots (if needed) + SELECT INTO #LineBreakdown",
+      "role_table": "#Step4",
+      "anchor_preview": ", [COVID]\r\n\r\nINTO #Step4\r\nFROM #Step3_2",
+      "anchor_line_number": 356,
+      "insertion_ends_at_line": 763,
+      "lines_added": 407,
+      "chars_added": 21265,
+      "new_content_preview": "-- ============================================================================================================================\n-- *** [PRICE BREAKDOWN - INSERTED SECTION] ***\n-- SOURCE TABLE : #Step3 (explicit narrow column list \u2014 post-inline-suppression, no LEAD slots in this script)\n-- HIERARCHY TABLE : #Step4 (encounter-level suppression outcomes)\n-- TOTAL PRICE TABLE : #Step5\n--\n-- COLUMN SURVIVAL TRACE:\n--   #Step3 is built with an EXPLICIT column list from #Step2.\n--   Confirmed present in #Step3: EncounterID, ServiceDate, RevenueCode, ProcedureCode,\n--     OriginalPayment, Amount, OP_D",
+      "confirmed_output_columns": [
+        "EncounterID",
+        "Sequence",
+        "ProcedureCode",
+        "RevenueCode",
+        "ServiceDate",
+        "BilledAmount",
+        "Quantity",
+        "BillCharges",
+        "ServiceCategory",
+        "PricingMethod",
+        "LinePayment",
+        "BundledByNCCI"
+      ]
+    },
+    {
+      "insertion_id": 3,
+      "phase": "final_join_detail_column",
+      "description": "Price_Breakdown_Detail correlated subquery as last column in FINAL_JOIN SELECT before INTO clause",
+      "role_table": "#Step7",
+      "anchor_preview": "Into #Step7",
+      "anchor_line_number": 952,
+      "insertion_ends_at_line": 965,
+      "lines_added": 13,
+      "chars_added": 625,
+      "new_content_preview": ", [Price_Breakdown_Detail] = (\n\t\tSELECT STRING_AGG(\n\t\t\t'Seq:'  + CAST(lb.[Sequence]       AS VARCHAR(MAX)) +\n\t\t\t' CPT:' + ISNULL(CAST(lb.[ProcedureCode]  AS VARCHAR(MAX)), '') +\n\t\t\t' Rev:' + ISNULL(CAST(lb.[RevenueCode]    AS VARCHAR(MAX)), '') +\n\t\t\t' | Cat:'     + CAST(lb.[ServiceCategory]  AS VARCHAR(MAX)) +\n\t\t\t' | Billed:$' + CAST(CONVERT(DECIMAL(12,2), ISNULL(lb.[BilledAmount], 0)) AS VARCHAR(MAX)) +\n\t\t\t' | Paid:$'   + CAST(CONVERT(DECIMAL(12,2), ISNULL(lb.[LinePayment],   0)) AS VARCHAR(MAX))\n\t\t, ' || ')\n\t\tWITHIN GROUP (ORDER BY lb.[Sequence])\n\t\tFROM #LineBreakdown lb\n\t\tWHERE lb.[Encounte"
+    },
+    {
+      "insertion_id": 4,
+      "phase": "auditor_queries",
+      "description": "Auditor Query 1 + INSERT + Query 2 reconciliation appended after final OUTPUT SELECT",
+      "role_table": "#StepFinal",
+      "anchor_preview": "Select [Status], count(*)\r\nFrom #StepFinal\r\nGroup by [Status]\r\norder by count(*) desc",
+      "anchor_line_number": 1002,
+      "insertion_ends_at_line": 1080,
+      "lines_added": 78,
+      "chars_added": 3058,
+      "new_content_preview": "\n--======================================================================\n-- *** [AUDITOR PRICE BREAKDOWN SUMMARY QUERIES - INSERTED SECTION] ***\n-- Run these after the main script completes.\n-- #LineBreakdown = one row per charge line (EncounterID + ServiceDate +\n--   RevenueCode + ProcedureCode granularity, joined to #Step2 for Sequence).\n-- ServiceCategory = final hierarchy decision (from #Step4 suppression logic).\n-- 'Suppressed_By_Hierarchy' = line matched a category but a higher-tier\n--   category won for this encounter.\n-- 'No_Payment_Category' = line did not match any pricing pattern.\n"
+    }
+  ],
+  "classification_issues": []
+}

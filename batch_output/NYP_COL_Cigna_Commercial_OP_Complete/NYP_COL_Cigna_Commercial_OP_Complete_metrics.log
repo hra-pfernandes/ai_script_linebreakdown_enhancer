@@ -1,0 +1,21 @@
+INSERTION 1 | phase=cleanup_drop anchor_line=20 ends_line=24 in=35168 out=191 time=3.53 cost=0.1195 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ContractYearFrom', 'ContractYearTo', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=654 ends_line=1174 in=37319 out=11550 time=131.61 cost=0.2964 success=True lines=520
+INSERTION 3 | phase=final_join_detail_column anchor_line=1373 ends_line=1387 in=45888 out=443 time=11.10 cost=0.1555 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1425 ends_line=1505 in=46369 out=1171 time=20.60 cost=0.1678 success=True lines=80
+FILE_SUMMARY | NYP_COL_Cigna_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=199797 output=14530 time=192.27 cost=0.8620
+FATAL | HYBRID_WRONG | 'lithotripsy' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'knee_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'cardiac_rehab' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'vascular_angioplasty' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'cardiac_cath' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'hip_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'shoulder_replacement' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+INSERTION 1 | phase=cleanup_drop anchor_line=20 ends_line=24 in=36852 out=191 time=5.63 cost=0.1215 success=True lines=4
+RN_CONSISTENCY_FAIL | ['rn_CAT']
+RN_CONSISTENCY_FAIL_RETRY | ['rn_CAT']
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'BillCharges', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=654 ends_line=1187 in=41143 out=11383 time=134.59 cost=0.3023 success=True lines=533
+INSERTION 3 | phase=final_join_detail_column anchor_line=1386 ends_line=1399 in=47415 out=400 time=8.27 cost=0.1564 success=True lines=13
+INSERTION 4 | phase=auditor_queries anchor_line=1437 ends_line=1512 in=47860 out=1087 time=17.36 cost=0.1680 success=True lines=75
+FILE_SUMMARY | NYP_COL_Cigna_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=286178 output=26329 time=314.60 cost=1.3103

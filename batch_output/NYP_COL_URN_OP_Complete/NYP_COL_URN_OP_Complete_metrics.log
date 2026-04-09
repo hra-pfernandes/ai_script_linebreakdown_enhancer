@@ -1,0 +1,6 @@
+INSERTION 1 | phase=cleanup_drop anchor_line=14 ends_line=18 in=4017 out=191 time=3.74 cost=0.0261 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ContractYearFrom', 'ContractYearTo', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=109 ends_line=229 in=5677 out=2068 time=33.56 cost=0.0592 success=True lines=120
+INSERTION 3 | phase=final_join_detail_column anchor_line=357 ends_line=371 in=6002 out=443 time=8.25 cost=0.0358 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=403 ends_line=478 in=6314 out=1078 time=15.59 cost=0.0463 success=True lines=75
+FILE_SUMMARY | NYP_COL_URN_OP_Complete.sql | insertions=4 success=4 failed=0 input=26215 output=4627 time=80.36 cost=0.2039

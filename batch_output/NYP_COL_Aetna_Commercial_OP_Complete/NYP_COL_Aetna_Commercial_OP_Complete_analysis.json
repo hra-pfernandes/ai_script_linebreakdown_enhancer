@@ -1,0 +1,655 @@
+{
+  "analysis": {
+    "line_level_source_table": "#Step3Bundle",
+    "hierarchy_table": "#Step4",
+    "total_price_table": "#Step5",
+    "final_join_table": "#Step7",
+    "output_table": "#StepFinal",
+    "has_ncci_bundle": true,
+    "has_window_reduction": true,
+    "window_reduction_categories": [
+      "Radiology/MRI/CT_Scan_Reduction",
+      "MRI/CT_Reduction",
+      "PT/OT/ST"
+    ],
+    "has_aggregate_date_step": false,
+    "hybrid_categories": [],
+    "max_categories": [
+      "ER",
+      "AS",
+      "Minor_Surgery",
+      "Endoscopy",
+      "Laparoscopy",
+      "Cardiac_Cath",
+      "Cardiac_Cath_Injection",
+      "PTCA",
+      "Lithotripsy",
+      "Lithotripsy_Injection",
+      "Gamma_Knife",
+      "Hip_Knee_Replacement",
+      "Shoulder_Replacement",
+      "COVID",
+      "Clinic",
+      "ER_Check",
+      "NeedsCorrectedClaim",
+      "Radiology/MRI/CT_Scan_Reduction",
+      "MRI/CT_Reduction",
+      "PT/OT/ST"
+    ],
+    "sum_categories": [
+      "OP_Default",
+      "Vascular_Angioplasty",
+      "Cardiac_Services",
+      "Implants",
+      "Implant_V2790",
+      "implant_C1713",
+      "Blood",
+      "Blood_Processing",
+      "Drugs",
+      "IV_Therapy",
+      "Chemotherapy",
+      "Lab",
+      "Radiation_Therapy",
+      "IOP",
+      "Psych",
+      "ECT",
+      "Miscellaneous",
+      "Sleep_Studies",
+      "Radiology/MRI/CT_Scan_NoReduction",
+      "MRI/CT_noReduction"
+    ],
+    "indicator_flag_categories": [
+      {
+        "column": "COVID",
+        "trigger_condition": "hardcoded to 0 in #Step2 LINE_PRICING (CASE...INTO #Step2 sets [COVID]=0); aggregated as MAX in #Step3_1 and MAX in #Step3_2; always 0 in this script",
+        "value_range": "always 0"
+      }
+    ],
+    "aggregate_date_raw": {
+      "note": "This script has NO AGGREGATE_DATE step (no GROUP BY EncounterID+ServiceDate). #Step3_1 groups by EncounterID only. The two aggregation steps are #Step3_1 (GROUP BY EncounterID) and #Step3_2 (GROUP BY EncounterID). There is no intermediate per-ServiceDate aggregation.",
+      "columns": [
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "AS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Minor_Surgery",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Endoscopy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Laparoscopy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath_Injection",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Vascular_Angioplasty",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Cardiac_Services",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Lithotripsy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Lithotripsy_Injection",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Gamma_Knife",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Hip_Knee_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Shoulder_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Implants",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Implant_V2790",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "implant_C1713",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood_Processing",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Chemotherapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "IV_Therapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Lab",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Radiology/MRI/CT_Scan_Reduction",
+          "agg_fn": "MAX_COMPOSITE",
+          "note": "MAX(RD1)+MAX(RD2)+...+MAX(RD10) \u2014 WINDOW_REDUCTION pivot"
+        },
+        {
+          "column": "MRI/CT_Reduction",
+          "agg_fn": "MAX_COMPOSITE",
+          "note": "MAX(RDC1)+MAX(RDC2)+...+MAX(RDC10) \u2014 WINDOW_REDUCTION pivot"
+        },
+        {
+          "column": "PT/OT/ST",
+          "agg_fn": "MAX_COMPOSITE",
+          "note": "MAX(Therapy1)+MAX(Therapy2)+...+MAX(Therapy10) \u2014 WINDOW_REDUCTION pivot"
+        },
+        {
+          "column": "Radiation_Therapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "IOP",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Psych",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ECT",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Miscellaneous",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Sleep_Studies",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Clinic",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Radiology/MRI/CT_Scan_NoReduction",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "MRI/CT_noReduction",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER_Check",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "NeedsCorrectedClaim",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "aggregate_enc_raw": {
+      "note": "#Step3_2 groups by EncounterID from #Step3_1 (which itself already grouped by EncounterID). Effectively both aggregation passes are by EncounterID only.",
+      "columns": [
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "AS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Minor_Surgery",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Endoscopy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Laparoscopy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath_Injection",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Vascular_Angioplasty",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Cardiac_Services",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Lithotripsy",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Lithotripsy_Injection",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Gamma_Knife",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Hip_Knee_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Shoulder_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Implants",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Implant_V2790",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "implant_C1713",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood_Processing",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "IV_Therapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Chemotherapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Lab",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Radiology/MRI/CT_Scan_Reduction",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "MRI/CT_Reduction",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Radiation_Therapy",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "PT/OT/ST",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "IOP",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Psych",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ECT",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Miscellaneous",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Sleep_Studies",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Clinic",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Radiology/MRI/CT_Scan_NoReduction",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "MRI/CT_noReduction",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER_Check",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "NeedsCorrectedClaim",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "window_reduction_lead_partitions": [
+      {
+        "category": "Radiology/MRI/CT_Scan_Reduction",
+        "slot_columns": [
+          "RD1",
+          "RD2",
+          "RD3",
+          "RD4",
+          "RD5",
+          "RD6",
+          "RD7",
+          "RD8",
+          "RD9",
+          "RD10"
+        ],
+        "lead_partition_by": "EncounterID_only",
+        "branked_partition_by": "EncounterID_only",
+        "bslots_group_by": "EncounterID_only"
+      },
+      {
+        "category": "MRI/CT_Reduction",
+        "slot_columns": [
+          "RDC1",
+          "RDC2",
+          "RDC3",
+          "RDC4",
+          "RDC5",
+          "RDC6",
+          "RDC7",
+          "RDC8",
+          "RDC9",
+          "RDC10"
+        ],
+        "lead_partition_by": "EncounterID_only",
+        "branked_partition_by": "EncounterID_only",
+        "bslots_group_by": "EncounterID_only"
+      },
+      {
+        "category": "PT/OT/ST",
+        "slot_columns": [
+          "Therapy1",
+          "Therapy2",
+          "Therapy3",
+          "Therapy4",
+          "Therapy5",
+          "Therapy6",
+          "Therapy7",
+          "Therapy8",
+          "Therapy9",
+          "Therapy10"
+        ],
+        "lead_partition_by": "EncounterID_only",
+        "branked_partition_by": "EncounterID_only",
+        "bslots_group_by": "EncounterID_only"
+      }
+    ],
+    "line_level_column_survival": {
+      "source_table": "#Step3Bundle",
+      "built_from": "#Step3 with explicit column list plus NeedsCorrectedClaim column; then NCCI UPDATEs zero out certain columns",
+      "uses_select_star_from_step3": true,
+      "note": "#Step3Bundle is built as SELECT s.*, CAST(0 AS TINYINT) AS NeedsCorrectedClaim INTO #Step3Bundle FROM #Step3 s \u2014 this is effectively SELECT * from #Step3 plus the new column, so ALL columns from #Step3 are present",
+      "columns_present": [
+        "EncounterID",
+        "ServiceDate",
+        "RevenueCode",
+        "STAT_IND",
+        "ProcedureCode",
+        "Modifier1",
+        "Sequence",
+        "Amount",
+        "BillCharges",
+        "OriginalPayment",
+        "OP_Default",
+        "ER",
+        "AS",
+        "Minor_Surgery",
+        "Endoscopy",
+        "Laparoscopy",
+        "Cardiac_Cath",
+        "Cardiac_Cath_Injection",
+        "PTCA",
+        "Vascular_Angioplasty",
+        "Cardiac_Services",
+        "Lithotripsy",
+        "Lithotripsy_Injection",
+        "Gamma_Knife",
+        "Hip_Knee_Replacement",
+        "Shoulder_Replacement",
+        "Implants",
+        "Implant_V2790",
+        "implant_C1713",
+        "Blood",
+        "Blood_Processing",
+        "Drugs",
+        "IV_Therapy",
+        "Chemotherapy",
+        "Lab",
+        "MRI/CT_noReduction",
+        "MRI/CT_Reduction",
+        "Radiology/MRI/CT_Scan_NoReduction",
+        "Radiology/MRI/CT_Scan_Reduction",
+        "ER_Check",
+        "RD1",
+        "RD2",
+        "RD3",
+        "RD4",
+        "RD5",
+        "RD6",
+        "RD7",
+        "RD8",
+        "RD9",
+        "RD10",
+        "RDC1",
+        "RDC2",
+        "RDC3",
+        "RDC4",
+        "RDC5",
+        "RDC6",
+        "RDC7",
+        "RDC8",
+        "RDC9",
+        "RDC10",
+        "Radiation_Therapy",
+        "Therapy1",
+        "Therapy2",
+        "Therapy3",
+        "Therapy4",
+        "Therapy5",
+        "Therapy6",
+        "Therapy7",
+        "Therapy8",
+        "Therapy9",
+        "Therapy10",
+        "IOP",
+        "Psych",
+        "ECT",
+        "Miscellaneous",
+        "Sleep_Studies",
+        "Clinic",
+        "COVID",
+        "NeedsCorrectedClaim",
+        "Quantity",
+        "Plan",
+        "Payer01Code",
+        "Payer01Name"
+      ],
+      "line_level_has_narrow_column_list": false,
+      "payment_columns_requiring_join": [],
+      "informational_columns_using_null_placeholder": []
+    },
+    "contract_periods": [
+      {
+        "period_label": "Y1_Apr2020_Mar2021",
+        "date_from": "2020-04-01",
+        "date_to": "2021-03-31"
+      },
+      {
+        "period_label": "Y2_Apr2021_Mar2022",
+        "date_from": "2021-04-01",
+        "date_to": "2022-03-31"
+      },
+      {
+        "period_label": "Y3_Apr2022_Mar2023",
+        "date_from": "2022-04-01",
+        "date_to": "2023-03-31"
+      },
+      {
+        "period_label": "Y3b_Jan2022_Mar2022_Drugs",
+        "date_from": "2022-01-01",
+        "date_to": "2022-03-31",
+        "note": "Drugs only sub-period: AMFS Rate x 2.16"
+      },
+      {
+        "period_label": "Y4a_Apr2023_Jun2023_Drugs",
+        "date_from": "2023-04-01",
+        "date_to": "2023-06-30",
+        "note": "Drugs sub-period: AMFS Rate x 2.40"
+      },
+      {
+        "period_label": "Y4b_Jul2023_Mar2024_Drugs",
+        "date_from": "2023-07-01",
+        "date_to": "2024-03-31",
+        "note": "Drugs sub-period: AMFS Rate x 2.40"
+      },
+      {
+        "period_label": "Y4_Lab_Feb2023_Mar2023",
+        "date_from": "2023-02-01",
+        "date_to": "2023-03-31",
+        "note": "Lab sub-period: multiplier 0.70"
+      },
+      {
+        "period_label": "Y4_Apr2023_Mar2024",
+        "date_from": "2023-04-01",
+        "date_to": "2024-03-31"
+      },
+      {
+        "period_label": "Y5_Apr2024_Mar2025",
+        "date_from": "2024-04-01",
+        "date_to": "2025-03-31"
+      },
+      {
+        "period_label": "Y6_Apr2025_Mar2026",
+        "date_from": "2025-04-01",
+        "date_to": "2026-03-31"
+      },
+      {
+        "period_label": "Lab_Apr2024_Mar2026",
+        "date_from": "2024-04-01",
+        "date_to": "2026-03-31",
+        "note": "Lab combined period: multiplier 0.70 (same rate as Apr2023-Mar2024)"
+      }
+    ]
+  },
+  "insertion_plan": [
+    {
+      "insertion_id": 1,
+      "phase": "cleanup_drop",
+      "description": "DROP TABLE safety lines for #bRanked, #bSlots, #LineBreakdown, #recon_temp in the cleanup block",
+      "role_anchor_table": "cleanup_block",
+      "anchor_snippet": "IF OBJECT_ID('tempdb..#StepFinal') IS NOT NULL DROP TABLE #StepFinal",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 2,
+      "phase": "breakdown_block",
+      "description": "#bRanked + #bSlots + SELECT INTO #LineBreakdown",
+      "role_anchor_table": "#Step4",
+      "anchor_snippet": "INTO #Step4\nFROM #Step3_2",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 3,
+      "phase": "final_join_detail_column",
+      "description": "Price_Breakdown_Detail correlated subquery as last column in FINAL_JOIN SELECT",
+      "role_anchor_table": "#Step7",
+      "anchor_snippet": "Into #Step7",
+      "insert_position": "before",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 4,
+      "phase": "auditor_queries",
+      "description": "Auditor Query 1 + INSERT + Query 2 reconciliation appended after final OUTPUT SELECT",
+      "role_anchor_table": "#StepFinal",
+      "anchor_snippet": "order by count(*) desc",
+      "insert_position": "after",
+      "occurrence_index": 1
+    }
+  ],
+  "missing_phases": [],
+  "classification_issues": [],
+  "classification_retries": 0
+}

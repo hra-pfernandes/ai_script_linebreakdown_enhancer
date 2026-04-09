@@ -1,0 +1,152 @@
+{
+  "session_info": {
+    "timestamp": "2026-04-01T14:42:01.805029",
+    "input_file": "C:\\Users\\pfernandes.HRA\\AI_Script_Enhancer\\input\\NYP_COL_Metroplus_Gold_Exchange_Essential_OP_Complete.sql",
+    "approach": "Role-based anchor insertion v9 \u2014 INDICATOR_FLAG + rn_ naming + consistency retry",
+    "file_id": "50d87202-9e3d-4030-9679-0f67f97eb855",
+    "session_id": "1575a89b-6a67-4f61-8468-bb42613bfc4a"
+  },
+  "analysis": {
+    "line_level_source_table": "#Step3",
+    "hierarchy_table": "#Step4",
+    "total_price_table": "#Step5",
+    "final_join_table": "#Step7",
+    "output_table": "#StepFinal",
+    "has_ncci_bundle": false,
+    "has_window_reduction": false,
+    "window_reduction_categories": [],
+    "has_aggregate_date_step": true,
+    "hybrid_categories": [],
+    "max_categories": [],
+    "sum_categories": [
+      "ER_In_Claim",
+      "Non_ER"
+    ],
+    "indicator_flag_categories": [],
+    "aggregate_date_raw": {
+      "columns": [
+        {
+          "column": "ER_In_Claim",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Non_ER",
+          "agg_fn": "SUM"
+        }
+      ]
+    },
+    "aggregate_enc_raw": {
+      "columns": [
+        {
+          "column": "ER_In_Claim",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Non_ER",
+          "agg_fn": "SUM"
+        }
+      ]
+    },
+    "window_reduction_lead_partitions": [],
+    "line_level_has_narrow_column_list": true,
+    "line_level_column_notes": {
+      "present_in_Step3": [
+        "EncounterID",
+        "ServiceDateTo",
+        "ER_In_Claim",
+        "Non_ER"
+      ],
+      "absent_from_Step3": [
+        "Sequence",
+        "ProcedureCode",
+        "RevenueCode",
+        "ProcedureCodeNumeric",
+        "Modifier1",
+        "ServiceDateFrom",
+        "OriginalPayment",
+        "Amount",
+        "BillCharges",
+        "Quantity",
+        "Plan",
+        "Payer01Code",
+        "Payer01Name"
+      ],
+      "payment_columns_requiring_join_back_to_Step2": [],
+      "informational_columns_requiring_null_placeholder": [
+        "Sequence",
+        "ProcedureCode",
+        "RevenueCode",
+        "Amount",
+        "BillCharges",
+        "Quantity"
+      ],
+      "notes": "#Step3 was built with an explicit narrow column list (only EncounterID, ServiceDateTo, ER_In_Claim, Non_ER). Neither ER_In_Claim nor Non_ER requires BillCharges or any external column for their LinePayment computation \u2014 both values are already the fully computed dollar amounts from #Step2 (Round(0.85*Amount,2) and Round(1.00*Amount,2) respectively). Therefore no JOIN back to #Step2 is needed for payment-critical columns. Display columns (Sequence, ProcedureCode, RevenueCode, Amount, BillCharges, Quantity) are absent and should use NULL placeholders in #LineBreakdown."
+    }
+  },
+  "missing_phases": [],
+  "insertions": [
+    {
+      "insertion_id": 1,
+      "phase": "cleanup_drop",
+      "description": "DROP TABLE safety lines for #bRanked, #bSlots, #LineBreakdown in the cleanup block",
+      "role_table": "cleanup_block",
+      "anchor_preview": "IF OBJECT_ID('tempdb..#StepFinal') IS NOT NULL DROP TABLE #StepFinal",
+      "anchor_line_number": 15,
+      "insertion_ends_at_line": 19,
+      "lines_added": 4,
+      "chars_added": 291,
+      "new_content_preview": "IF OBJECT_ID('tempdb..#bRanked')       IS NOT NULL DROP TABLE #bRanked\nIF OBJECT_ID('tempdb..#bSlots')        IS NOT NULL DROP TABLE #bSlots\nIF OBJECT_ID('tempdb..#LineBreakdown') IS NOT NULL DROP TABLE #LineBreakdown\nIF OBJECT_ID('tempdb..#recon_temp')    IS NOT NULL DROP TABLE #recon_temp"
+    },
+    {
+      "insertion_id": 2,
+      "phase": "breakdown_block",
+      "description": "#bRanked + optional #bSlots + SELECT INTO #LineBreakdown",
+      "role_table": "#Step4",
+      "anchor_preview": ",[ER_In_Claim]\n\t,[Non_ER]\t\t\n\n\tINTO #Step4\n\tFROM #Step3_2",
+      "anchor_line_number": 120,
+      "insertion_ends_at_line": 283,
+      "lines_added": 163,
+      "chars_added": 6798,
+      "new_content_preview": "\n--=======================================================================\n-- *** [PRICE BREAKDOWN - INSERTED SECTION] ***\n-- SOURCE  : #Step3 (narrow column list: EncounterID, ServiceDateTo,\n--           ER_In_Claim, Non_ER)\n--           joined to #Step4 for encounter-level suppression decisions.\n--\n-- NO WINDOW_REDUCTION categories in this script.\n-- NO INDICATOR_FLAG categories in this script.\n-- NO NCCI bundle step in this script.\n--\n-- SUM CATEGORIES (all matching lines pay):\n--   ER_In_Claim : Round(0.85 * Amount, 2) for RevenueCode LIKE '45%'\n--   Non_ER      : Round(1.00 * Amount, 2) f",
+      "confirmed_output_columns": [
+        "EncounterID",
+        "Sequence",
+        "ProcedureCode",
+        "RevenueCode",
+        "ServiceDate",
+        "BilledAmount",
+        "Quantity",
+        "BillCharges",
+        "ServiceCategory",
+        "PricingMethod",
+        "LinePayment",
+        "BundledByNCCI"
+      ]
+    },
+    {
+      "insertion_id": 3,
+      "phase": "final_join_detail_column",
+      "description": "Price_Breakdown_Detail correlated subquery as last column in FINAL_JOIN SELECT",
+      "role_table": "#Step7",
+      "anchor_preview": "Into #Step7",
+      "anchor_line_number": 417,
+      "insertion_ends_at_line": 430,
+      "lines_added": 13,
+      "chars_added": 624,
+      "new_content_preview": ", [Price_Breakdown_Detail] = (\n\t\tSELECT STRING_AGG(\n\t\t\t'Seq:'  + CAST(lb.[Sequence]        AS VARCHAR(MAX)) +\n\t\t\t' CPT:' + ISNULL(CAST(lb.[ProcedureCode] AS VARCHAR(MAX)), '') +\n\t\t\t' Rev:' + ISNULL(CAST(lb.[RevenueCode]   AS VARCHAR(MAX)), '') +\n\t\t\t' | Cat:'     + CAST(lb.[ServiceCategory]  AS VARCHAR(MAX)) +\n\t\t\t' | Billed:$' + CAST(CONVERT(DECIMAL(12,2), ISNULL(lb.[BilledAmount], 0)) AS VARCHAR(MAX)) +\n\t\t\t' | Paid:$'   + CAST(CONVERT(DECIMAL(12,2), ISNULL(lb.[LinePayment],   0)) AS VARCHAR(MAX))\n\t\t, ' || ')\n\t\tWITHIN GROUP (ORDER BY lb.[Sequence])\n\t\tFROM #LineBreakdown lb\n\t\tWHERE lb.[Encounter"
+    },
+    {
+      "insertion_id": 4,
+      "phase": "auditor_queries",
+      "description": "Auditor Query 1 + INSERT + Query 2 reconciliation appended after final OUTPUT SELECT",
+      "role_table": "#StepFinal",
+      "anchor_preview": "Select [Status], count(*)\n\tFrom #StepFinal\n\tGroup by [Status]\n\torder by count(*) desc",
+      "anchor_line_number": 466,
+      "insertion_ends_at_line": 541,
+      "lines_added": 75,
+      "chars_added": 2849,
+      "new_content_preview": "\n\n--======================================================================\n-- *** [AUDITOR PRICE BREAKDOWN SUMMARY QUERIES - INSERTED SECTION] ***\n-- Run these after the main script completes.\n-- #LineBreakdown = one row per charge line (EncounterID + Sequence).\n-- ServiceCategory = final hierarchy decision (both categories are SUM;\n--   no suppression hierarchy exists in this script).\n-- 'Suppressed_By_Hierarchy' = line had a computed value but the\n--   encounter-level #Step4 column was zeroed (edge-case guard only).\n-- 'No_Payment_Category' = line did not match any pricing pattern.\n-- Bundle"
+    }
+  ],
+  "classification_issues": []
+}

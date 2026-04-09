@@ -1,0 +1,51 @@
+{
+  "analysis": {
+    "line_level_source_table": "#Step2",
+    "hierarchy_table": "#Step4",
+    "total_price_table": "#Step5",
+    "final_join_table": "#Step7",
+    "output_table": "#StepFinal",
+    "has_ncci_bundle": false,
+    "has_window_reduction": false,
+    "window_reduction_categories": []
+  },
+  "insertion_plan": [
+    {
+      "insertion_id": 1,
+      "phase": "cleanup_drop",
+      "description": "DROP TABLE safety lines for #bRanked, #bSlots, #LineBreakdown, and #recon_temp added to the cleanup block at the top of the script",
+      "role_anchor_table": "cleanup_block",
+      "anchor_snippet": "IF OBJECT_ID('tempdb..#StepFINal') IS NOT NULL DROP TABLE #StepFINal",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 2,
+      "phase": "breakdown_block",
+      "description": "SELECT INTO #bRanked (ranked source rows with ROW_NUMBER for OP_Default MAX category) + SELECT INTO #LineBreakdown (one row per charge line with ServiceCategory, PricingMethod, LinePayment, BundledByNCCI). No #bSlots needed \u2014 no WINDOW_REDUCTION categories exist. Source is #Step2 joined to #Step4 for suppression. No NCCI bundle step exists so BundledByNCCI = CAST(0 AS TINYINT).",
+      "role_anchor_table": "#Step4",
+      "anchor_snippet": ",[OP_Default]\t\t\t\n\n\tINTO #Step4\n\tFROM #Step3_2",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 3,
+      "phase": "final_join_detail_column",
+      "description": "Price_Breakdown_Detail correlated subquery added as the last column in the FINAL_JOIN SELECT (the SELECT that builds #Step7), placed immediately before the INTO #Step7 clause",
+      "role_anchor_table": "#Step7",
+      "anchor_snippet": "INto #Step7",
+      "insert_position": "before",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 4,
+      "phase": "auditor_queries",
+      "description": "Auditor Query 1 (full line-level detail SELECT from #LineBreakdown) + INSERT INTO [Automation].[dbo].[LineBreakdown_Results] + Query 2 (reconciliation: SUM of LinePayment per EncounterID from #LineBreakdown vs Price from #Step5), appended after the final OUTPUT SELECT statements",
+      "role_anchor_table": "#StepFinal",
+      "anchor_snippet": "Select [Status], count(*)\n\tFrom #StepFinal\n\tGroup by [Status]\n\torder by count(*) desc",
+      "insert_position": "after",
+      "occurrence_index": 1
+    }
+  ],
+  "missing_phases": []
+}

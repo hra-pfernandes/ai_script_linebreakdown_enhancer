@@ -1,0 +1,36 @@
+INSERTION 1 | phase=cleanup_drop anchor_line=18 ends_line=22 in=26498 out=191 time=4.32 cost=0.0935 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ContractYearFrom', 'ContractYearTo', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=538 ends_line=1041 in=28456 out=11009 time=130.17 cost=0.2617 success=True lines=503
+INSERTION 3 | phase=final_join_detail_column anchor_line=1261 ends_line=1275 in=36976 out=496 time=9.47 cost=0.1295 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1312 ends_line=1391 in=37432 out=1146 time=17.61 cost=0.1407 success=True lines=79
+FILE_SUMMARY | NYP_COL_Oxford_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=153065 output=26785 time=333.06 cost=0.9056
+ERROR | NYP_COL_Oxford_Commercial_OP_Complete.sql | Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'You have reached your specified API usage limits. You will regain access on 2026-04-01 at 00:00 UTC.'}, 'request_id': 'req_011CZSnwAQghMa2Ebb4Y2opa'}
+INSERTION 1 | phase=cleanup_drop anchor_line=18 ends_line=22 in=24057 out=191 time=3.50 cost=0.0864 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ContractYearFrom', 'ContractYearTo', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=538 ends_line=1097 in=26264 out=11252 time=139.45 cost=0.2589 success=True lines=559
+INSERTION 3 | phase=final_join_detail_column anchor_line=1314 ends_line=1328 in=35179 out=443 time=8.47 cost=0.1235 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1368 ends_line=1444 in=35642 out=1110 time=17.81 cost=0.1349 success=True lines=76
+FILE_SUMMARY | NYP_COL_Oxford_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=144988 output=14248 time=192.32 cost=0.7053
+INSERTION 1 | phase=cleanup_drop anchor_line=18 ends_line=22 in=24827 out=191 time=3.09 cost=0.0887 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ContractYearFrom', 'ContractYearTo', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=538 ends_line=1189 in=27479 out=12169 time=153.01 cost=0.2763 success=True lines=651
+INSERTION 3 | phase=final_join_detail_column anchor_line=1406 ends_line=1420 in=36922 out=443 time=9.78 cost=0.1288 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1460 ends_line=1540 in=37385 out=1154 time=19.43 cost=0.1408 success=True lines=80
+FILE_SUMMARY | NYP_COL_Oxford_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=150459 output=15817 time=213.03 cost=0.7455
+INSERTION 1 | phase=cleanup_drop anchor_line=18 ends_line=22 in=28292 out=191 time=4.49 cost=0.0993 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ContractYearFrom', 'ContractYearTo', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=538 ends_line=1154 in=31288 out=12712 time=156.25 cost=0.2961 success=True lines=616
+INSERTION 3 | phase=final_join_detail_column anchor_line=1372 ends_line=1386 in=40428 out=454 time=8.77 cost=0.1396 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1425 ends_line=1505 in=40885 out=1169 time=19.50 cost=0.1517 success=True lines=80
+FILE_SUMMARY | NYP_COL_Oxford_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=164883 output=31113 time=392.63 cost=1.0190
+FATAL | INDICATOR_IN_MAX | 'cpt_43235' is in both indicator_flag_categories and max_categories. INDICATOR_FLAG categories must not appear in max_categories.
+FATAL | INDICATOR_IN_MAX | 'covid' is in both indicator_flag_categories and max_categories. INDICATOR_FLAG categories must not appear in max_categories.
+FATAL | INDICATOR_IN_MAX | 'cpt_91040' is in both indicator_flag_categories and max_categories. INDICATOR_FLAG categories must not appear in max_categories.
+FATAL | HYBRID_WRONG | 'lab' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'clinic' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+INSERTION 1 | phase=cleanup_drop anchor_line=18 ends_line=22 in=25381 out=191 time=3.61 cost=0.0871 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'BillCharges', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=538 ends_line=1040 in=29681 out=10285 time=121.78 cost=0.2514 success=True lines=502
+INSERTION 3 | phase=final_join_detail_column anchor_line=1257 ends_line=1270 in=35556 out=401 time=7.25 cost=0.1208 success=True lines=13
+INSERTION 4 | phase=auditor_queries anchor_line=1310 ends_line=1385 in=35982 out=1086 time=16.39 cost=0.1324 success=True lines=75
+FILE_SUMMARY | NYP_COL_Oxford_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=175379 output=13904 time=175.01 cost=0.7834

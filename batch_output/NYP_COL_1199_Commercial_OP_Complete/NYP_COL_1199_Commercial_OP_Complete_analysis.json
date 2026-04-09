@@ -1,0 +1,270 @@
+{
+  "analysis": {
+    "line_level_source_table": "#Step3",
+    "hierarchy_table": "#Step4",
+    "total_price_table": "#Step5",
+    "final_join_table": "#Step7",
+    "output_table": "#StepFinal",
+    "has_ncci_bundle": false,
+    "has_window_reduction": true,
+    "window_reduction_categories": [
+      "AS"
+    ],
+    "has_aggregate_date_step": true,
+    "hybrid_categories": [],
+    "max_categories": [
+      "as",
+      "PTCA_Cardiac_Cath_Qualifier",
+      "Cardiac_Cath",
+      "Shoulder_Replacement",
+      "ER",
+      "Hip_Replacement",
+      "Gamma_Knife",
+      "Sleep_Studies",
+      "PTCA",
+      "PTCA_Cardiac_Cath",
+      "EPS",
+      "Knee_Replacement"
+    ],
+    "sum_categories": [
+      "OP_Default",
+      "PT/OT/ST",
+      "Drugs",
+      "Blood",
+      "Fee_Schedule",
+      "Implants"
+    ],
+    "indicator_flag_categories": [
+      "COVID"
+    ],
+    "aggregate_date_raw": {
+      "columns": [
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Fee_Schedule",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Fee_Schedule1",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Fee_Schedule2",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "PT/OT/ST",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "AS",
+          "agg_fn": "MAX(AS1)+MAX(AS2)+MAX(AS3)+MAX(AS4)+MAX(AS5)+MAX(AS6)+MAX(AS7)+MAX(AS8)+MAX(AS9)+MAX(AS10)"
+        },
+        {
+          "column": "PTCA_Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA_Cardiac_Cath_Qualifier",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "EPS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Gamma_Knife",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Hip_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Knee_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Shoulder_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Implants",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Sleep_Studies",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "aggregate_enc_raw": {
+      "columns": [
+        {
+          "column": "Fee_Schedule",
+          "agg_fn": "SUM(Fee_Schedule)+SUM(Fee_Schedule1)+SUM(Fee_Schedule2) combined as Fee_Schedule"
+        },
+        {
+          "column": "OP_Default",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "PT/OT/ST",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "ER",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "AS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA_Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA_Cardiac_Cath_Qualifier",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Cardiac_Cath",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "PTCA",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "EPS",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Gamma_Knife",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Hip_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Knee_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Shoulder_Replacement",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "Drugs",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Blood",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Implants",
+          "agg_fn": "SUM"
+        },
+        {
+          "column": "Sleep_Studies",
+          "agg_fn": "MAX"
+        },
+        {
+          "column": "COVID",
+          "agg_fn": "MAX"
+        }
+      ]
+    },
+    "window_reduction_lead_partitions": [
+      {
+        "category": "AS",
+        "slot_columns": [
+          "AS1",
+          "AS2",
+          "AS3",
+          "AS4",
+          "AS5",
+          "AS6",
+          "AS7",
+          "AS8",
+          "AS9",
+          "AS10"
+        ],
+        "lead_partition_by": "EncounterID_only",
+        "branked_partition_by": "EncounterID_only",
+        "bslots_group_by": "EncounterID_only"
+      }
+    ]
+  },
+  "insertion_plan": [
+    {
+      "insertion_id": 1,
+      "phase": "cleanup_drop",
+      "description": "DROP TABLE safety lines for #bRanked, #bSlots, #LineBreakdown, #recon_temp in the cleanup block",
+      "role_anchor_table": "cleanup_block",
+      "anchor_snippet": "IF OBJECT_ID('tempdb..#StepFinal') IS NOT NULL DROP TABLE #StepFinal",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 2,
+      "phase": "breakdown_block",
+      "description": "#bRanked + #bSlots + SELECT INTO #LineBreakdown",
+      "role_anchor_table": "#Step4",
+      "anchor_snippet": "INTO #Step4\nFROM #Step3_2",
+      "insert_position": "after",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 3,
+      "phase": "final_join_detail_column",
+      "description": "Price_Breakdown_Detail correlated subquery as last column in FINAL_JOIN SELECT",
+      "role_anchor_table": "#Step7",
+      "anchor_snippet": "Into #Step7",
+      "insert_position": "before",
+      "occurrence_index": 1
+    },
+    {
+      "insertion_id": 4,
+      "phase": "auditor_queries",
+      "description": "Auditor Query 1 + INSERT + Query 2 reconciliation appended after final OUTPUT SELECT",
+      "role_anchor_table": "#StepFinal",
+      "anchor_snippet": "order by count(*) desc",
+      "insert_position": "after",
+      "occurrence_index": 1
+    }
+  ],
+  "missing_phases": [],
+  "classification_issues": [],
+  "classification_retries": 1
+}

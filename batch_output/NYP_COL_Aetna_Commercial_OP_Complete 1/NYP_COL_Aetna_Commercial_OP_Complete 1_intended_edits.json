@@ -1,0 +1,81 @@
+{
+  "session_info": {
+    "timestamp": "2026-03-18T16:29:10.389865",
+    "script_version": "optimized_main_batch_db_fixed.py",
+    "input_file": "C:\\Users\\pfernandes.HRA\\AI_Script_Enhancer\\input\\NYP_COL_Aetna_Commercial_OP_Complete 1.sql",
+    "reference_file": "AI_NYP_COL_AETNA_FINAL2.sql",
+    "approach": "Batch Processing + DB Integration + INSERT/REPLACE FIX",
+    "file_id": "77c86ec1-0f3b-45aa-ad5c-1ccf67c3e4cc",
+    "session_id": "de4b0f8d-8f5f-48ac-a45e-1bbceec1827a"
+  },
+  "intended_edits": [
+    {
+      "edit_id": 1,
+      "timestamp": "2026-03-18T16:29:31.851521",
+      "description": "Add #LineBreakdown to the temp table cleanup block at the top of the script",
+      "position": 1847,
+      "match_type": "exact",
+      "old_snippet": "IF OBJECT_ID('tempdb..#StepFinal') IS NOT NULL DROP TABLE #StepFinal",
+      "new_snippet_generated_by_ai": "IF OBJECT_ID('tempdb..#StepFinal') IS NOT NULL DROP TABLE #StepFinal\nIF OBJECT_ID('tempdb..#LineBreakdown') IS NOT NULL DROP TABLE #LineBreakdown",
+      "snippet_length": {
+        "old": 68,
+        "new": 145
+      },
+      "content_analysis": {
+        "lines_added": 1,
+        "characters_added": 77
+      }
+    },
+    {
+      "edit_id": 2,
+      "timestamp": "2026-03-18T16:31:30.222380",
+      "description": "Insert the full line-level breakdown block (CTEs bRanked, bSlots, and SELECT INTO #LineBreakdown) after the #Step4 INSERT and before the #Step5 INSERT, using ;WITH because the preceding statement ends without a semicolon",
+      "position": 111084,
+      "match_type": "exact",
+      "old_snippet": "Select *\n\t, [Drugs]\n\t+[Implants]\n\t+[Blood]\n\t+[Blood_Processing]\n\t+[Gamma_Knife]\n\t+[Shoulder_Replacement]\t\n\t+[Hip_Knee_Replacement]\t\n\t+[PTCA]\t\t\t\t\t\n\t+[Lithotripsy]\n\t+[Lithotripsy_Injection]\n\t+[Laparoscopy]\t\t\t\n\t+[Cardiac_Cath]\n\t+[Cardiac_Cath_Injection]\n\t+[AS]\t\t\t\t\t\n\t+[Minor_Surgery]\t\t\n\t+[Endoscopy]\t\t\t\n...",
+      "new_snippet_generated_by_ai": "--======================================================================\n-- *** [PRICE BREAKDOWN - INSERTED SECTION] ***\n-- PURPOSE : Produce a LINE-LEVEL price breakdown for auditor review.\n--           One row per charge line (EncounterID + Sequence + ProcedureCode).\n--\n-- SOURCE : #Step3Bundle (post-NCCI bundling, pre-hierarchy)\n--          joined to #Step4 for suppression decisions.\n--\n-- MAX CATEGORIES (only the highest-value line per encounter pays):\n--   ER, AS, Minor_Surgery, Endoscopy, Laparoscopy, Cardiac_Cath,\n--   Cardiac_Cath_Injection, PTCA, Lithotripsy, Lithotripsy_Injection,\n--   Gamma_Knife, Hip_Knee_Replacement, Shoulder_Replacement, Clinic\n--\n-- SUM CATEGORIES (all matching lines pay):\n--   OP_Default, Vascular_Angioplasty, Cardiac_Services, Implants, Blood,\n--   Blood_Processing, Drugs, IV_Therapy, Chemotherapy, Lab, Radiation_Therapy,\n--   IOP, Psych, ECT, Miscellaneous, Sleep_Studies,\n--   Radiology/MRI/CT (via LEAD windows), PT/OT/ST (via Therapy windows)\n--\n-- W...",
+      "snippet_length": {
+        "old": 695,
+        "new": 25706
+      },
+      "content_analysis": {
+        "lines_added": 291,
+        "characters_added": 25011
+      }
+    },
+    {
+      "edit_id": 4,
+      "timestamp": "2026-03-18T16:31:49.205322",
+      "description": "Append auditor breakdown summary queries after the final output SELECT at the end of the script",
+      "position": 140831,
+      "match_type": "normalized",
+      "old_snippet": "-- \t DECLARE @DBName SYSNAME = DB_NAME();\n-- EXEC Analytics.dbo.InsertScriptsStepFinal\n--     @TargetDB  = @DBName,  @ScriptName = 'NYP_COL_AETNA_OP_COM';   -- Replace with actual script name\n \n-- /***********************************************************************************************\n-- ***...",
+      "new_snippet_generated_by_ai": "-- \t DECLARE @DBName SYSNAME = DB_NAME();\n-- EXEC Analytics.dbo.InsertScriptsStepFinal\n--     @TargetDB  = @DBName,  @ScriptName = 'NYP_COL_AETNA_OP_COM';   -- Replace with actual script name\n \n-- /***********************************************************************************************\n-- *** ONLY UNCOMMENT AND RUN THE COMMIT STEP WHEN YOU ARE READY FOR THE ACCOUNTS TO BE SENT\n-- *** TO PRS FOR AUTOMATED PROCESSING. ONCE COMMITTED, THE WORKFLOW CANNOT BE UNDONE.\n-- ***********************************************************************************************/\n-- --EXEC Analytics.dbo.CommitScriptsStepFinal  @TargetDB = @DBName;\n\n--======================================================================\n-- *** [AUDITOR PRICE BREAKDOWN SUMMARY QUERIES - INSERTED SECTION] ***\n-- Run these after the main script to get service-level breakdowns for review.\n-- #LineBreakdown = one row per charge line (EncounterID + Sequence + ProcedureCode).\n-- ServiceCategory reflects the final hierarch...",
+      "snippet_length": {
+        "old": 642,
+        "new": 2633
+      },
+      "content_analysis": {
+        "lines_added": 50,
+        "characters_added": 1991
+      }
+    },
+    {
+      "edit_id": 3,
+      "timestamp": "2026-03-18T16:32:01.165706",
+      "description": "Add Price_Breakdown_Detail correlated subquery column to the #Step7 SELECT (the FINAL_JOIN step that builds the output row per encounter)",
+      "position": 148282,
+      "match_type": "exact",
+      "old_snippet": "\t, p.[AuditorName]\n\t, p.[employee_type]\n\t, p.[audit_by]\n\t, p.[audit_date]\n\t, p.[notes]\n\t, p.[date] as [Date Downloaded]\n\n\nInto #Step7\nFrom #Step6 as x\n\n\tleft join [PRS].[dbo].[PRS_Data] as p on x.[EncounterID] = p.[patient_id_real]\n\nOrder by Round([Price] - (cast(x.[OriginalPayment] as float)), 2) D...",
+      "new_snippet_generated_by_ai": "\t, p.[AuditorName]\n\t, p.[employee_type]\n\t, p.[audit_by]\n\t, p.[audit_date]\n\t, p.[notes]\n\t, p.[date] as [Date Downloaded]\n\t, [Price_Breakdown_Detail] = (\n\t\tSELECT STRING_AGG(\n\t\t\t'Seq:' + CAST(lb.[Sequence] AS VARCHAR(MAX)) +\n\t\t\t' CPT:' + ISNULL(CAST(lb.[ProcedureCode] AS VARCHAR(MAX)), '') +\n\t\t\t' Rev:' + ISNULL(CAST(lb.[RevenueCode] AS VARCHAR(MAX)), '') +\n\t\t\t' | Cat:' + CAST(lb.[ServiceCategory] AS VARCHAR(MAX)) +\n\t\t\t' | Billed:$' + CAST(CONVERT(DECIMAL(12,2), ISNULL(lb.[BilledAmount], 0)) AS VARCHAR(MAX)) +\n\t\t\t' | Paid:$' + CAST(CONVERT(DECIMAL(12,2), ISNULL(lb.[LinePayment], 0)) AS VARCHAR(MAX)) +\n\t\t\tCASE WHEN lb.[BundledByNCCI] = 1 THEN ' [NCCI-BUNDLED]' ELSE '' END\n\t\t, ' || ')\n\t\tWITHIN GROUP (ORDER BY lb.[Sequence])\n\t\tFROM #LineBreakdown lb\n\t\tWHERE lb.[EncounterID] = x.[EncounterID]\n\t)\n\n\nInto #Step7\nFrom #Step6 as x\n\n\tleft join [PRS].[dbo].[PRS_Data] as p on x.[EncounterID] = p.[patient_id_real]\n\nOrder by Round([Price] - (cast(x.[OriginalPayment] as float)), 2) DESC",
+      "snippet_length": {
+        "old": 303,
+        "new": 983
+      },
+      "content_analysis": {
+        "lines_added": 14,
+        "characters_added": 680
+      }
+    }
+  ]
+}

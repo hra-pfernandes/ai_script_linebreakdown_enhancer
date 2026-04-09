@@ -1,0 +1,16 @@
+INSERTION 1 | phase=cleanup_drop anchor_line=27 ends_line=31 in=35602 out=193 time=3.99 cost=0.1209 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'ContractYearFrom', 'ContractYearTo', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=598 ends_line=1064 in=37587 out=9939 time=118.45 cost=0.2730 success=True lines=466
+INSERTION 3 | phase=final_join_detail_column anchor_line=1254 ends_line=1268 in=44964 out=453 time=8.75 cost=0.1529 success=True lines=14
+INSERTION 4 | phase=auditor_queries anchor_line=1303 ends_line=1383 in=45432 out=1166 time=18.51 cost=0.1650 success=True lines=80
+FILE_SUMMARY | NYP_COL_UHC_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=196817 output=25893 time=323.67 cost=1.0235
+FATAL | HYBRID_WRONG | 'endoscopy' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'gamma_knife' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'ptca' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+FATAL | HYBRID_WRONG | 'cardiac_cath' is in hybrid_categories but evidence is AGGREGATE_DATE=MAX, AGGREGATE_ENC=MAX. Expected AGGREGATE_DATE=MAX, AGGREGATE_ENC=SUM.
+INSERTION 1 | phase=cleanup_drop anchor_line=27 ends_line=31 in=34821 out=193 time=3.76 cost=0.1155 success=True lines=4
+LB_COLUMNS | ['EncounterID', 'Sequence', 'ProcedureCode', 'RevenueCode', 'ServiceDate', 'BilledAmount', 'Quantity', 'BillCharges', 'ServiceCategory', 'PricingMethod', 'LinePayment', 'BundledByNCCI']
+INSERTION 2 | phase=breakdown_block anchor_line=598 ends_line=1077 in=39064 out=9879 time=119.76 cost=0.2735 success=True lines=479
+INSERTION 3 | phase=final_join_detail_column anchor_line=1266 ends_line=1279 in=44597 out=400 time=7.85 cost=0.1479 success=True lines=13
+INSERTION 4 | phase=auditor_queries anchor_line=1315 ends_line=1390 in=45031 out=1087 time=16.52 cost=0.1595 success=True lines=75
+FILE_SUMMARY | NYP_COL_UHC_Commercial_OP_Complete.sql | insertions=4 success=4 failed=0 input=231219 output=13366 time=175.81 cost=0.9429
